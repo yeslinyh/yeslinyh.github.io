@@ -16,6 +16,6 @@
   2. **解压**软件后，右键**管理员运行**​`Wub_x64.exe`
 
       ![](https://ca6d7cae.telegraph-image-6yx.pages.dev/file/aaecd64d54f88e954e3a7.png)
-  3. 按照如图所示设置后重启电脑
+  3. 按照如图所示设置后，重启电脑
 
       ![](https://ca6d7cae.telegraph-image-6yx.pages.dev/file/38e8c802fbd5cc4b66ae1.png)

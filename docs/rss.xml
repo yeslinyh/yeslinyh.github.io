@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>PC DIY BLOG</title><link>https://yeslinyh.github.io</link><description>分享有趣的电脑组装芝士</description><copyright>PC DIY BLOG</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://ca6d7cae.telegraph-image-6yx.pages.dev/file/3129ba92ed7a95eb90e36.jpg</url><title>avatar</title><link>https://yeslinyh.github.io</link></image><lastBuildDate>Thu, 20 Jun 2024 03:50:13 +0000</lastBuildDate><managingEditor>PC DIY BLOG</managingEditor><ttl>60</ttl><webMaster>PC DIY BLOG</webMaster><item><title>修改 Windows 字体</title><link>https://yeslinyh.github.io/post/xiu-gai-%20Windows%20-zi-ti.html</link><description>### 修改 Windows 字体&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>PC DIY BLOG</title><link>https://yeslinyh.github.io</link><description>分享有趣的电脑组装芝士</description><copyright>PC DIY BLOG</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://ca6d7cae.telegraph-image-6yx.pages.dev/file/3129ba92ed7a95eb90e36.jpg</url><title>avatar</title><link>https://yeslinyh.github.io</link></image><lastBuildDate>Thu, 20 Jun 2024 03:50:34 +0000</lastBuildDate><managingEditor>PC DIY BLOG</managingEditor><ttl>60</ttl><webMaster>PC DIY BLOG</webMaster><item><title>修改 Windows 字体</title><link>https://yeslinyh.github.io/post/xiu-gai-%20Windows%20-zi-ti.html</link><description>### 修改 Windows 字体&#13;
 &#13;
 1. 首先下载以下两个文件&#13;
 &#13;
@@ -48,6 +48,6 @@
   2. **解压**软件后，右键**管理员运行**​`Wub_x64.exe`&#13;
 &#13;
       ![](https://ca6d7cae.telegraph-image-6yx.pages.dev/file/aaecd64d54f88e954e3a7.png)&#13;
-  3. 按照如图所示设置后重启电脑&#13;
+  3. 按照如图所示设置后，重启电脑&#13;
 &#13;
       ![](https://ca6d7cae.telegraph-image-6yx.pages.dev/file/38e8c802fbd5cc4b66ae1.png)。</description><guid isPermaLink="true">https://yeslinyh.github.io/post/guan-bi-%20Windows%20-geng-xin.html</guid><pubDate>Thu, 20 Jun 2024 02:09:53 +0000</pubDate></item></channel></rss>
