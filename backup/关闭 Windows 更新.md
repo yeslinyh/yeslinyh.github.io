@@ -12,7 +12,7 @@
 
 2. 使用软件关闭更新
 
-    1. 下载软件 [[Windows Update Blocker](https://pcdiy.xyz/d/Cloudflare%20R2/Windows/Windows_%E7%A6%81%E6%AD%A2%E6%9B%B4%E6%96%B0/Windows_Update_Blocker_v1.8.7z?sign=XSZjq2MXSoVMMkgLqJlgF53xby2lBmiFPm0168Obw84=:0)](https://pcdiy.xyz/d/Cloudflare%20R2/Windows/Windows_%E7%A6%81%E6%AD%A2%E6%9B%B4%E6%96%B0/Windows_Update_Blocker_v1.8.7z?sign=XSZjq2MXSoVMMkgLqJlgF53xby2lBmiFPm0168Obw84=:0)
+    1. 下载软件 [Windows Update Blocker](https://pcdiy.xyz/d/Cloudflare%20R2/Windows/Windows_%E7%A6%81%E6%AD%A2%E6%9B%B4%E6%96%B0/Windows_Update_Blocker_v1.8.7z?sign=XSZjq2MXSoVMMkgLqJlgF53xby2lBmiFPm0168Obw84=:0)
     2. **解压**软件后，右键**管理员运行**​`Wub_x64.exe`
 
         ![](https://ca6d7cae.telegraph-image-6yx.pages.dev/file/aaecd64d54f88e954e3a7.png)
