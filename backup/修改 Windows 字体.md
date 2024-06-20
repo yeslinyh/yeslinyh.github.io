@@ -13,7 +13,7 @@
 
 3. 解压 noMeiryoUI 工具
 
-    启动 noMeiryoUI.exe 程序
+    右键管理员运行 `noMeiryoUI.exe` 程序
     找到 `苹方-简` `常规体` 大小 9~12，依次点击 `确定` `应用`
 
     ![](https://ca6d7cae.telegraph-image-6yx.pages.dev/file/28a093e7aaf703077aca8.png)
@@ -23,7 +23,7 @@
 ---
 
 * 如果觉得字体显示不够清晰
-  可以电脑底部 搜索 调整 ClearType 文本
+  可以在电脑底部 `搜索` `调整 ClearType 文本`
 
   ![](https://ca6d7cae.telegraph-image-6yx.pages.dev/file/64977cec23e097a2f4ef2.png)
 
