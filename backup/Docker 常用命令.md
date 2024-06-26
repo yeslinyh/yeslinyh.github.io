@@ -104,7 +104,7 @@
     进入容器
 5. `docker export` / `docker import`
 
-    导出容器 / 导入容器快照
+    导出容器 / 导入容器
 6. `docker rm`
 
     删除容器
