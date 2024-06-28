@@ -1,6 +1,6 @@
-# PC DIY BLOG :link: https://yeslinyh.github.io 
-### :page_facing_up: [8](https://yeslinyh.github.io/tag.html) 
+# PC DIY BLOG :link: https://blog.pcdiy.xyz 
+### :page_facing_up: [8](https://blog.pcdiy.xyz/tag.html) 
 ### :speech_balloon: 0 
 ### :hibiscus: 14489 
-### :alarm_clock: 2024-06-29 01:06:40 
+### :alarm_clock: 2024-06-29 01:19:52 
 ### Powered by :heart: [Gmeek](https://github.com/Meekdai/Gmeek)
