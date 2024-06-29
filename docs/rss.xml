@@ -1,5 +1,22 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>PC DIY BLOG</title><link>https://blog.pcdiy.xyz</link><description>分享有趣的电脑组装芝士</description><copyright>PC DIY BLOG</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://img.pcdiy.xyz/file/3129ba92ed7a95eb90e36.jpg</url><title>avatar</title><link>https://blog.pcdiy.xyz</link></image><lastBuildDate>Sat, 29 Jun 2024 01:51:09 +0000</lastBuildDate><managingEditor>PC DIY BLOG</managingEditor><ttl>60</ttl><webMaster>PC DIY BLOG</webMaster><item><title>test</title><link>https://blog.pcdiy.xyz/post/test.html</link><description>test。</description><guid isPermaLink="true">https://blog.pcdiy.xyz/post/test.html</guid><pubDate>Fri, 28 Jun 2024 11:36:12 +0000</pubDate></item><item><title>幻兽帕鲁 新开档 6.27 樱岛更新版本</title><link>https://blog.pcdiy.xyz/post/huan-shou-pa-lu-%20-xin-kai-dang-%206.27%20-ying-dao-geng-xin-ban-ben.html</link><description>1. 打开游戏，点击 `加入多人游戏（专用服务器）`&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>PC DIY BLOG</title><link>https://blog.pcdiy.xyz</link><description>分享有趣的电脑组装芝士</description><copyright>PC DIY BLOG</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://img.pcdiy.xyz/file/3129ba92ed7a95eb90e36.jpg</url><title>avatar</title><link>https://blog.pcdiy.xyz</link></image><lastBuildDate>Sat, 29 Jun 2024 04:46:44 +0000</lastBuildDate><managingEditor>PC DIY BLOG</managingEditor><ttl>60</ttl><webMaster>PC DIY BLOG</webMaster><item><title>IDM 安装教程</title><link>https://blog.pcdiy.xyz/post/IDM%20-an-zhuang-jiao-cheng.html</link><description>1. [下载](https://pcdiy.xyz/%E7%94%B5%E8%84%91%E8%BD%AF%E4%BB%B6/%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BD%E5%99%A8.Internet_Download_Manager) `internet_download_manager_6.42.12.zip`&#13;
+&#13;
+    ![](https://img.pcdiy.xyz/file/146e87bdb1c014bcbc09b.png)&#13;
+2. 解压&#13;
+&#13;
+    ![](https://img.pcdiy.xyz/file/3cbc6cb469f6ac6cb9fe5.png)&#13;
+3. 打开解压后的文件夹，找到 `Internet Download Manager 6.42.12.exe` 文件，右键 `管理员运行`&#13;
+&#13;
+    ![](https://img.pcdiy.xyz/file/f56e6e1dbbd463e41542d.png)&#13;
+4. 无脑下一步即可，安装路径可以修改 `盘符`，比如 `C:` 改成 `D:` `E:`&#13;
+5. 正常来说完成以上 4 步就可以使用了，如果不能使用请按照以下步骤完成注册激活&#13;
+&#13;
+    ![](https://www.upload.ee/image/16748999/idm_registration.gif)&#13;
+6. 参考链接&#13;
+&#13;
+    * 官网：https://www.internetdownloadmanager.com/download.html&#13;
+    * 俄罗斯破解版：https://lrepacks.ru/repaki-programm-dlya-interneta/56-internet-download-manager-repack.html&#13;
+    * 俄罗斯破解版国内百度网盘镜像：https://pan.baidu.com/s/1BJ9rhlL42L9_Vn8Ph5OEOA?pwd=h4mb。</description><guid isPermaLink="true">https://blog.pcdiy.xyz/post/IDM%20-an-zhuang-jiao-cheng.html</guid><pubDate>Sat, 29 Jun 2024 04:46:21 +0000</pubDate></item><item><title>test</title><link>https://blog.pcdiy.xyz/post/test.html</link><description>test。</description><guid isPermaLink="true">https://blog.pcdiy.xyz/post/test.html</guid><pubDate>Fri, 28 Jun 2024 11:36:12 +0000</pubDate></item><item><title>幻兽帕鲁 新开档 6.27 樱岛更新版本</title><link>https://blog.pcdiy.xyz/post/huan-shou-pa-lu-%20-xin-kai-dang-%206.27%20-ying-dao-geng-xin-ban-ben.html</link><description>1. 打开游戏，点击 `加入多人游戏（专用服务器）`&#13;
 &#13;
     ![](https://img.pcdiy.xyz/file/8eeed74dda0f27c95a348.jpg)&#13;
 2. 在如图所示框内输入 `117128.xyz:8211` 后，点击 `连接`&#13;
