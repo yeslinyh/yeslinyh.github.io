@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>PC DIY BLOG</title><link>https://blog.pcdiy.xyz</link><description>分享有趣的电脑组装芝士</description><copyright>PC DIY BLOG</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://img.pcdiy.xyz/file/3129ba92ed7a95eb90e36.jpg</url><title>avatar</title><link>https://blog.pcdiy.xyz</link></image><lastBuildDate>Sat, 29 Jun 2024 01:45:46 +0000</lastBuildDate><managingEditor>PC DIY BLOG</managingEditor><ttl>60</ttl><webMaster>PC DIY BLOG</webMaster><item><title>test</title><link>https://blog.pcdiy.xyz/post/test.html</link><description>test。</description><guid isPermaLink="true">https://blog.pcdiy.xyz/post/test.html</guid><pubDate>Fri, 28 Jun 2024 11:36:12 +0000</pubDate></item><item><title>幻兽帕鲁 新开档 6.27 樱岛更新版本</title><link>https://blog.pcdiy.xyz/post/huan-shou-pa-lu-%20-xin-kai-dang-%206.27%20-ying-dao-geng-xin-ban-ben.html</link><description>1. 打开游戏，点击 `加入多人游戏（专用服务器）`&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>PC DIY BLOG</title><link>https://blog.pcdiy.xyz</link><description>分享有趣的电脑组装芝士</description><copyright>PC DIY BLOG</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://img.pcdiy.xyz/file/3129ba92ed7a95eb90e36.jpg</url><title>avatar</title><link>https://blog.pcdiy.xyz</link></image><lastBuildDate>Sat, 29 Jun 2024 01:46:07 +0000</lastBuildDate><managingEditor>PC DIY BLOG</managingEditor><ttl>60</ttl><webMaster>PC DIY BLOG</webMaster><item><title>test</title><link>https://blog.pcdiy.xyz/post/test.html</link><description>test。</description><guid isPermaLink="true">https://blog.pcdiy.xyz/post/test.html</guid><pubDate>Fri, 28 Jun 2024 11:36:12 +0000</pubDate></item><item><title>幻兽帕鲁 新开档 6.27 樱岛更新版本</title><link>https://blog.pcdiy.xyz/post/huan-shou-pa-lu-%20-xin-kai-dang-%206.27%20-ying-dao-geng-xin-ban-ben.html</link><description>1. 打开游戏，点击 `加入多人游戏（专用服务器）`&#13;
 &#13;
     ![](https://img.pcdiy.xyz/file/8eeed74dda0f27c95a348.jpg)&#13;
 2. 在如图所示框内输入 `117128.xyz:8211` 后，点击 `连接`&#13;
@@ -159,9 +159,7 @@
       表示为容器分配一个伪终端 (pseudo-TTY) ，即为容器分配一个虚拟终端&#13;
     * `docker run -it`&#13;
 &#13;
-      创建一个新的容器，并在其中启动一个交互式的终端。</description><guid isPermaLink="true">https://blog.pcdiy.xyz/post/Docker%20-chang-yong-ming-ling.html</guid><pubDate>Wed, 26 Jun 2024 11:03:00 +0000</pubDate></item><item><title>电子科技大学雅思机考考点</title><link>https://blog.pcdiy.xyz/post/dian-zi-ke-ji-da-xue-ya-si-ji-kao-kao-dian.html</link><description># 电子科技大学雅思机考考点&#13;
-&#13;
-## 地铁路线&#13;
+      创建一个新的容器，并在其中启动一个交互式的终端。</description><guid isPermaLink="true">https://blog.pcdiy.xyz/post/Docker%20-chang-yong-ming-ling.html</guid><pubDate>Wed, 26 Jun 2024 11:03:00 +0000</pubDate></item><item><title>电子科技大学雅思机考考点</title><link>https://blog.pcdiy.xyz/post/dian-zi-ke-ji-da-xue-ya-si-ji-kao-kao-dian.html</link><description>## 地铁路线&#13;
 &#13;
 * `成都东站` 到 `电子科技大学沙河校区第二教学楼-西南门`&#13;
 &#13;
