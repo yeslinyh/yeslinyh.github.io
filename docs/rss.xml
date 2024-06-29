@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>PC DIY BLOG</title><link>https://blog.pcdiy.xyz</link><description>分享有趣的电脑组装芝士</description><copyright>PC DIY BLOG</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://img.pcdiy.xyz/file/3129ba92ed7a95eb90e36.jpg</url><title>avatar</title><link>https://blog.pcdiy.xyz</link></image><lastBuildDate>Sat, 29 Jun 2024 01:46:32 +0000</lastBuildDate><managingEditor>PC DIY BLOG</managingEditor><ttl>60</ttl><webMaster>PC DIY BLOG</webMaster><item><title>test</title><link>https://blog.pcdiy.xyz/post/test.html</link><description>test。</description><guid isPermaLink="true">https://blog.pcdiy.xyz/post/test.html</guid><pubDate>Fri, 28 Jun 2024 11:36:12 +0000</pubDate></item><item><title>幻兽帕鲁 新开档 6.27 樱岛更新版本</title><link>https://blog.pcdiy.xyz/post/huan-shou-pa-lu-%20-xin-kai-dang-%206.27%20-ying-dao-geng-xin-ban-ben.html</link><description>1. 打开游戏，点击 `加入多人游戏（专用服务器）`&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>PC DIY BLOG</title><link>https://blog.pcdiy.xyz</link><description>分享有趣的电脑组装芝士</description><copyright>PC DIY BLOG</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://img.pcdiy.xyz/file/3129ba92ed7a95eb90e36.jpg</url><title>avatar</title><link>https://blog.pcdiy.xyz</link></image><lastBuildDate>Sat, 29 Jun 2024 01:51:09 +0000</lastBuildDate><managingEditor>PC DIY BLOG</managingEditor><ttl>60</ttl><webMaster>PC DIY BLOG</webMaster><item><title>test</title><link>https://blog.pcdiy.xyz/post/test.html</link><description>test。</description><guid isPermaLink="true">https://blog.pcdiy.xyz/post/test.html</guid><pubDate>Fri, 28 Jun 2024 11:36:12 +0000</pubDate></item><item><title>幻兽帕鲁 新开档 6.27 樱岛更新版本</title><link>https://blog.pcdiy.xyz/post/huan-shou-pa-lu-%20-xin-kai-dang-%206.27%20-ying-dao-geng-xin-ban-ben.html</link><description>1. 打开游戏，点击 `加入多人游戏（专用服务器）`&#13;
 &#13;
     ![](https://img.pcdiy.xyz/file/8eeed74dda0f27c95a348.jpg)&#13;
 2. 在如图所示框内输入 `117128.xyz:8211` 后，点击 `连接`&#13;
@@ -112,9 +112,7 @@
 &#13;
         ```&#13;
         echo 0xDEADBEEF &gt; /etc/config/google_fu_mode&#13;
-        ```。</description><guid isPermaLink="true">https://blog.pcdiy.xyz/post/jing-dong-yun-wu-xian-ya-se-%20AX1800%20Pro%20-wu-chai-shua-ji-jiao-cheng.html</guid><pubDate>Thu, 27 Jun 2024 05:19:33 +0000</pubDate></item><item><title>Docker 常用命令</title><link>https://blog.pcdiy.xyz/post/Docker%20-chang-yong-ming-ling.html</link><description>#### Docker 常用命令&#13;
-&#13;
-##### 安装&#13;
+        ```。</description><guid isPermaLink="true">https://blog.pcdiy.xyz/post/jing-dong-yun-wu-xian-ya-se-%20AX1800%20Pro%20-wu-chai-shua-ji-jiao-cheng.html</guid><pubDate>Thu, 27 Jun 2024 05:19:33 +0000</pubDate></item><item><title>Docker 常用命令</title><link>https://blog.pcdiy.xyz/post/Docker%20-chang-yong-ming-ling.html</link><description>##### 安装&#13;
 &#13;
 1. [Ubuntu](https://www.runoob.com/docker/ubuntu-docker-install.html)&#13;
 &#13;
@@ -260,9 +258,7 @@
 &#13;
     1. 如果你是首次进群，你需要完成你第一个被邀站点的考核任务/契约，并坚持一个月及以上&#13;
     2. 群内会不定期发放其他站点的邀请，届时你仅需要在群内申请即可，无需任何契约即可获得邀请&#13;
-    3. 若邀请数量 &lt; 申请人数，则按照 `进群时长` 与 `做种体积` 综合考虑发放。</description><guid isPermaLink="true">https://blog.pcdiy.xyz/post/PT%20Invitation.html</guid><pubDate>Thu, 20 Jun 2024 10:06:33 +0000</pubDate></item><item><title>修改 Windows 字体</title><link>https://blog.pcdiy.xyz/post/xiu-gai-%20Windows%20-zi-ti.html</link><description>### 修改 Windows 字体&#13;
-&#13;
-1. 首先下载以下两个文件&#13;
+    3. 若邀请数量 &lt; 申请人数，则按照 `进群时长` 与 `做种体积` 综合考虑发放。</description><guid isPermaLink="true">https://blog.pcdiy.xyz/post/PT%20Invitation.html</guid><pubDate>Thu, 20 Jun 2024 10:06:33 +0000</pubDate></item><item><title>修改 Windows 字体</title><link>https://blog.pcdiy.xyz/post/xiu-gai-%20Windows%20-zi-ti.html</link><description>1. 首先下载以下两个文件&#13;
 &#13;
     1. [苹方字体-19.0正式版.zip](https://www.yuque.com/attachments/yuque/0/2024/zip/29650418/1715580494209-8edf91ed-9b88-4fae-8695-a0be0e8a69d6.zip)&#13;
     2. [noMeiryoUI.zip](https://www.yuque.com/attachments/yuque/0/2024/zip/29650418/1715580261054-692f6fd3-5bff-4521-b480-d43068ed5bca.zip)&#13;
