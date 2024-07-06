@@ -3,8 +3,7 @@
 1. [Ubuntu](https://www.runoob.com/docker/ubuntu-docker-install.html)
 
     ```
-     curl -fsSL https://test.docker.com -o test-docker.sh
-     sudo sh test-docker.sh
+     sudo apt install docker.io -y && sudo apt install docker-compose
     ```
 2. [Debian](https://www.runoob.com/docker/debian-docker-install.html)
 
