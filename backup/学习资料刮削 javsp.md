@@ -4,6 +4,8 @@
 
 ![](https://img.pcdiy.xyz/file/41a0d89e8d09e90585ee5.png)
 
+![](https://img.pcdiy.xyz/file/b92dcdc39eec5585b8223.png)
+
 #### 如何部署
 
 1. 按照以下内容，准备好 `config.ini` 文件，并根据你的情况放入指定路径，比如 `/home/docker/config.ini`
