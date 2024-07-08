@@ -1,20 +1,20 @@
-### [javsp](https://hub.docker.com/r/kxhubs/javsp)
+# [javsp](https://hub.docker.com/r/kxhubs/javsp)
 
-#### 项目预览效果
+## 项目预览效果
 
-![](https://img.pcdiy.xyz/file/41a0d89e8d09e90585ee5.png)
+​![](https://img.pcdiy.xyz/file/41a0d89e8d09e90585ee5.png)​
 
-![](https://img.pcdiy.xyz/file/b92dcdc39eec5585b8223.png)
+​![](https://img.pcdiy.xyz/file/b92dcdc39eec5585b8223.png)​
 
-#### 如何部署
+## 如何部署
 
-1. 按照以下内容，准备好 `config.ini` 文件，并根据你的情况放入指定路径，比如 `/home/docker/config.ini`
+1. 按照以下内容，准备好 `config.ini`​ 文件，并根据你的情况放入指定路径，比如 `/home/docker/config.ini`​
 
-    其中 `scan_dir` 为必填参数，该参数是你需要刮削的路径，比如 `scan_dir = /media`
+    其中 `scan_dir`​ 为必填参数，该参数是你需要刮削的路径，比如 `scan_dir = /media`​
 
-    另外 `engine` 是我推荐填写的参数，意思是翻译引擎，建议填写为 `engine = google`
+    另外 `engine`​ 是我推荐填写的参数，意思是翻译引擎，建议填写为 `engine = google`​
 
-    其他参数按照你喜欢的来填，如果无法启动，就按照我给你的模板，只更改 `scan_dir` 和 `engine`
+    其他参数按照你喜欢的来填，如果无法启动，就按照我给你的模板，只更改 `scan_dir`​ 和 `engine`​
 
     ```ini
     # 推测番号前忽略文件名中的特定字符串（忽略大小写，以英文分号;分隔）
@@ -160,22 +160,23 @@
     # 是否在刮削结束后自动退出软件
     auto_exit = false
     ```
-2. `docker` 的部署
+2. ​`docker`​ 的部署
 
-    其中两个 `-v` 参数是**最重要的**，务必填写正确
+    其中两个 `-v`​ 参数是**最重要的**，务必填写正确
 
-    `-v [第一步中，你存放 config.ini 文件的路径]/config.ini:/app/core/config.ini \`<br />`-v [你的影片在主机中的路径]:/media \`
+    ​`-v [第一步中，你存放 config.ini 文件的路径]/config.ini:/app/core/config.ini \`​
+    `-v [你的影片在主机中的路径]:/media \`​
 
-    `-e CRON_TIME="*/30 * * * *" \` 这个参数是一个 `crontab` 定时执行表达式，比如现在是每 30 分钟执行一次
+    ​`-e CRON_TIME="*/30 * * * *" \`​ 这个参数是一个 `crontab`​ 定时执行表达式，比如现在是每 30 分钟执行一次
 
-    你可以根据你的需求去替换，如果你不会 `crontab` 表达式，你可以在[该网站](https://tool.lu/crontab)生成或者保持默认
+    你可以根据你的需求去替换，如果你不会 `crontab`​ 表达式，你可以在[该网站](https://tool.lu/crontab)生成或者保持默认
 
     ```go
     docker run -d \
          --name javsp \
          --restart=always \
          -e CRON_TIME="*/30 * * * *" \
-         -v [第一步中，你存放 config.ini 文件的路径]/config.ini:/app/core/config.ini \
-         -v [你的影片在主机中的路径]:/media \
+         -v /volume4/docker/javsp/config.ini:/app/core/config.ini \
+         -v /volume1/media/:/media \
          kxhubs/javsp:latest
     ```
