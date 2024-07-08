@@ -173,7 +173,7 @@
          --name javsp \
          --restart=always \
          -e CRON_TIME="*/30 * * * *" \
-         -v /volume4/docker/javsp/config.ini:/app/core/config.ini \
-         -v /volume1/media/:/media \
+         -v [第一步中，你存放 config.ini 文件的路径]/config.ini:/app/core/config.ini \
+         -v [你的影片在主机中的路径]:/media \
          kxhubs/javsp:latest
     ```

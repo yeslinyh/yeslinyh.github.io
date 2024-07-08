@@ -310,8 +310,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
      <span class="pl-c1">-</span><span class="pl-c1">-</span><span class="pl-s1">name</span> <span class="pl-s1">javsp</span> \
      <span class="pl-c1">-</span><span class="pl-c1">-</span><span class="pl-s1">restart</span><span class="pl-c1">=</span><span class="pl-s1">always</span> \
      <span class="pl-c1">-</span><span class="pl-s1">e</span> <span class="pl-s1">CRON_TIME</span><span class="pl-c1">=</span><span class="pl-s">"*/30 * * * *"</span> \
-     <span class="pl-c1">-</span><span class="pl-s1">v</span> <span class="pl-c1">/</span><span class="pl-s1">volume4</span><span class="pl-c1">/</span><span class="pl-s1">docker</span><span class="pl-c1">/</span><span class="pl-s1">javsp</span><span class="pl-c1">/</span>config.<span class="pl-smi">ini</span>:<span class="pl-c1">/</span><span class="pl-s1">app</span><span class="pl-c1">/</span><span class="pl-s1">core</span><span class="pl-c1">/</span>config.<span class="pl-smi">ini</span> \
-     <span class="pl-c1">-</span><span class="pl-s1">v</span> <span class="pl-c1">/</span><span class="pl-s1">volume1</span><span class="pl-c1">/</span><span class="pl-s1">media</span><span class="pl-c1">/</span>:<span class="pl-c1">/</span><span class="pl-s1">media</span> \
+     <span class="pl-c1">-</span><span class="pl-smi">v</span> [第一步中，<span class="pl-s1">你存放</span> <span class="pl-s1">config</span>.<span class="pl-smi">ini</span> <span class="pl-s1">文件的路径</span>]<span class="pl-c1">/</span>config.<span class="pl-smi">ini</span>:<span class="pl-c1">/</span><span class="pl-s1">app</span><span class="pl-c1">/</span><span class="pl-s1">core</span><span class="pl-c1">/</span>config.<span class="pl-smi">ini</span> \
+     <span class="pl-c1">-</span><span class="pl-smi">v</span> [<span class="pl-smi">你的影片在主机中的路径</span>]:<span class="pl-c1">/</span><span class="pl-s1">media</span> \
      <span class="pl-s1">kxhubs</span><span class="pl-c1">/</span><span class="pl-s1">javsp</span>:<span class="pl-s1">latest</span></pre></div>
 </li>
 </ol></div>
