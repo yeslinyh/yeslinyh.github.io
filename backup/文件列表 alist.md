@@ -227,70 +227,78 @@ location / {
 2. 底部自定义
 
     ```html
-            <br />
-            <center class="dibu">
+        <br />
+        <center class="dibu">
+            <div style=" line-height: 20px;font-size: 9pt;font-weight: bold;">
+                <span>
+                    "
+                    <span style="color: rgb(13, 109, 252); font-weight: bold;" id="hitokoto">
+                        <a href="#" id="hitokoto_text">
+                            "人生最大的遗憾,就是在最无能为力的时候遇到一个想要保护一生的人."
+                        </a>
+                    </span> "
+                </span>
+                <p style="margin-left: 10rem;font-size: 8pt;">
+                    <small>
+                        —— Anwen's Cloud
+                    </small>
+                </p>
+            </div>
 
-                <div style="font-size: 20px; font-weight: bold;">
-                    <span class="nav-item">
-                        <a class="nav-link" href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=vS4Jyt8wSecObdv7LNLtwxP7U_SBIeqg&authKey=5UXdAh1sOrSevtuUpHJOZ02BjE9STWrEXdzwArqBQ3ooeJmeUtNei84%2BGmFbpt4J&noverify=0&group_code=885781238"
-                            target="_blank">
-                            <i class="fab fa-qq" style="color:#FE9900" aria-hidden="true">
-                            </i>
-                            QQ |
-                        </a>
-                    </span>
-                    <span class="nav-item">
-                        <a class="nav-link" href="https://kdocs.cn/l/cbHE1IEOZyOj" target="_blank">
-                            <i class="fa-duotone fa-envelope-open" style="color:#FE9900" aria-hidden="true">
-                            </i>
-                            文档 |
-                        </a>
-                    </span>
-                    <span class="nav-item">
-                        <a class="nav-link" href="https://blog.pcdiy.xyz" target="_blank">
-                            <i class="fas fa-edit" style="color:#FE9900" aria-hidden="true">
-                            </i>
-                            博客 |
-                        </a>
-                    </span>
-                    <span class="nav-item">
-                        <a class="nav-link" href="https://tieba.baidu.com/f?kw=diy%E9%9B%B6%E4%BB%B6%E7%BB%84%E8%A3%85&ie=utf-8" target="_blank">
-                            <i class="fas fa-comment-lines" style="color:#FE9900;" aria-hidden="true">
-                            </i>
-                            贴吧 |
-                        </a>
-                    </span>
-                    <span class="nav-item">
-                        <a class="nav-link" href="https://nezha.pcdiy.xyz" target="_blank">
-                            <i class="fa fa-tachometer" style="color:#FE9900;" aria-hidden="true">
-                            </i>
-                            探针 |
-                        </a>
-                    </span>
-                    <span class="nav-item">
-                        <a class="nav-link" href="https://bing.pcdiy.xyz" target="_blank">
-                            <i class="fa fa-wifi" style="color:#FE9900" aria-hidden="true">
-                            </i>
-                            AI |
-                        </a>
-                    </span>
-                    <!--后台入口-->
-                    <span class="nav-item">
-                        <a class="nav-link" href="/@manage" target="_blank">
-                            <i class="fa-solid fa-folder-gear" style="color:#FE9900;" aria-hidden="true">
-                            </i>
-                            管理 |
-                        </a>
-                    </span>
-                    <!--版权，请尊重作者-->
-                    <span class="nav-item">
-                        <a class="nav-link" href="https://github.com/Xhofe/alist" target="_blank">
-                            <i class="fa-solid fa-copyright" style="color:#FE9900;" aria-hidden="true">
-                            </i>
-                            版权
-                        </a>
-                    </span>
-    				<br />
+            <div style="font-size: 13px; font-weight: bold;">
+                <span class="nav-item">
+                    <a class="nav-link" href="xxxxxxxxxx"
+                        target="_blank">
+                        <i class="fab fa-qq" style="color:#409EFF" aria-hidden="true">
+                        </i>
+                        QQ |
+                    </a>
+                </span>
+                <span class="nav-item">
+                    <a class="nav-link" href="mailto:xxxxx@foxmail.com" target="_blank">
+                        <i class="fa-duotone fa-envelope-open" style="color:#409EFF" aria-hidden="true">
+                        </i>
+                        邮箱 |
+                    </a>
+                </span>
+                <span class="nav-item">
+                    <a class="nav-link" href="xxxxxx" target="_blank">
+                        <i class="fas fa-edit" style="color:#409EFF" aria-hidden="true">
+                        </i>
+                        博客 |
+                    </a>
+                </span>
+                <span class="nav-item">
+                    <a class="nav-link" href="xxxxxxxx" target="_blank">
+                        <i class="fas fa-comment-lines" style="color:#409EFF;" aria-hidden="true">
+                        </i>
+                        留言 |
+                    </a>
+                </span>
+                <span class="nav-item">
+                    <a class="nav-link" href="xxxxxxx" target="_blank">
+                        <i class="fa fa-cloud-download" style="color:#409EFF;" aria-hidden="true">
+                        </i>
+                        云盘 |
+                    </a>
+                </span>
+                <!--后台入口-->
+                <span class="nav-item">
+                    <a class="nav-link" href="/@manage" target="_blank">
+                        <i class="fa-solid fa-folder-gear" style="color:#409EFF;" aria-hidden="true">
+                        </i>
+                        管理 |
+                    </a>
+                </span>
+                <!--版权，请尊重作者-->
+                <span class="nav-item">
+                    <a class="nav-link" href="https://github.com/Xhofe/alist" target="_blank">
+                        <i class="fa-solid fa-copyright" style="color:#409EFF;" aria-hidden="true">
+                        </i>
+                        Alist
+                    </a>
+                </span>
+				<br />
     ```
 3. 去掉 `power by`​ 和 `管理`​
 
