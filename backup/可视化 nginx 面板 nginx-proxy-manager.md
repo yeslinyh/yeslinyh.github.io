@@ -1,3 +1,5 @@
+![](https://img.pcdiy.xyz/file/01e28ac2be3566e2a17bc.png)
+
 # 更新系统环境
 
 ```powershell
