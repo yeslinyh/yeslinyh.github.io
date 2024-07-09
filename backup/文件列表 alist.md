@@ -229,27 +229,12 @@ location / {
     ```html
         <br />
         <center class="dibu">
-            <div style=" line-height: 20px;font-size: 9pt;font-weight: bold;">
-                <span>
-                    "
-                    <span style="color: rgb(13, 109, 252); font-weight: bold;" id="hitokoto">
-                        <a href="#" id="hitokoto_text">
-                            "人生最大的遗憾,就是在最无能为力的时候遇到一个想要保护一生的人."
-                        </a>
-                    </span> "
-                </span>
-                <p style="margin-left: 10rem;font-size: 8pt;">
-                    <small>
-                        —— Anwen's Cloud
-                    </small>
-                </p>
-            </div>
 
-            <div style="font-size: 13px; font-weight: bold;">
+            <div style="font-size: 20px; font-weight: bold;">
                 <span class="nav-item">
-                    <a class="nav-link" href="xxxxxxxxxx"
+                    <a class="nav-link" href="xxxxxx"
                         target="_blank">
-                        <i class="fab fa-qq" style="color:#409EFF" aria-hidden="true">
+                        <i class="fab fa-qq" style="color:#FE9900" aria-hidden="true">
                         </i>
                         QQ |
                     </a>
