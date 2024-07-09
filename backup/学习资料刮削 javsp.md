@@ -171,7 +171,7 @@
 
     你可以根据你的需求去替换，如果你不会 `crontab`​ 表达式，你可以在[该网站](https://tool.lu/crontab)生成或者保持默认
 
-    ```go
+    ```powershell
     docker run -d \
          --name javsp \
          --restart=always \

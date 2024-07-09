@@ -312,13 +312,13 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <code class="notranslate">-v [你的影片在主机中的路径]:/media \</code>​</p>
 <p>​<code class="notranslate">-e CRON_TIME="*/30 * * * *" \</code>​ 这个参数是一个 <code class="notranslate">crontab</code>​ 定时执行表达式，比如现在是每 30 分钟执行一次</p>
 <p>你可以根据你的需求去替换，如果你不会 <code class="notranslate">crontab</code>​ 表达式，你可以在<a href="https://tool.lu/crontab" rel="nofollow">该网站</a>生成或者保持默认</p>
-<div class="highlight highlight-source-go"><pre class="notranslate"><span class="pl-s1">docker</span> <span class="pl-s1">run</span> <span class="pl-c1">-</span><span class="pl-s1">d</span> \
-     <span class="pl-c1">-</span><span class="pl-c1">-</span><span class="pl-s1">name</span> <span class="pl-s1">javsp</span> \
-     <span class="pl-c1">-</span><span class="pl-c1">-</span><span class="pl-s1">restart</span><span class="pl-c1">=</span><span class="pl-s1">always</span> \
-     <span class="pl-c1">-</span><span class="pl-s1">e</span> <span class="pl-s1">CRON_TIME</span><span class="pl-c1">=</span><span class="pl-s">"*/30 * * * *"</span> \
-     <span class="pl-c1">-</span><span class="pl-s1">v</span> <span class="pl-c1">/</span><span class="pl-s1">volume4</span><span class="pl-c1">/</span><span class="pl-s1">docker</span><span class="pl-c1">/</span><span class="pl-s1">javsp</span><span class="pl-c1">/</span>config.<span class="pl-smi">ini</span>:<span class="pl-c1">/</span><span class="pl-s1">app</span><span class="pl-c1">/</span><span class="pl-s1">core</span><span class="pl-c1">/</span>config.<span class="pl-smi">ini</span> \
-     <span class="pl-c1">-</span><span class="pl-s1">v</span> <span class="pl-c1">/</span><span class="pl-s1">volume1</span><span class="pl-c1">/</span><span class="pl-s1">media</span><span class="pl-c1">/</span>:<span class="pl-c1">/</span><span class="pl-s1">media</span> \
-     <span class="pl-s1">kxhubs</span><span class="pl-c1">/</span><span class="pl-s1">javsp</span>:<span class="pl-s1">latest</span></pre></div>
+<div class="highlight highlight-source-powershell"><pre class="notranslate">docker run <span class="pl-k">-</span>d \
+     <span class="pl-k">--</span>name javsp \
+     <span class="pl-k">--</span>restart<span class="pl-k">=</span>always \
+     <span class="pl-k">-</span>e CRON_TIME<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>*/30 * * * *<span class="pl-pds">"</span></span> \
+     <span class="pl-k">-</span>v <span class="pl-k">/</span>volume4<span class="pl-k">/</span>docker<span class="pl-k">/</span>javsp<span class="pl-k">/</span>config.ini:<span class="pl-k">/</span>app<span class="pl-k">/</span>core<span class="pl-k">/</span>config.ini \
+     <span class="pl-k">-</span>v <span class="pl-k">/</span>volume1<span class="pl-k">/</span>media<span class="pl-k">/</span>:<span class="pl-k">/</span>media \
+     kxhubs<span class="pl-k">/</span>javsp:latest</pre></div>
 </li>
 </ol></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
