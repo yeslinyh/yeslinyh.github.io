@@ -1,4 +1,4 @@
-![](https://img.pcdiy.xyz/file/01e28ac2be3566e2a17bc.png)
+![](https://img.pcdiy.xyz/file/97b89af62e8e85de001e8.png)
 
 # 更新系统环境
 

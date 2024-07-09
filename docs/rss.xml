@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>PC DIY</title><link>https://blog.pcdiy.xyz</link><description>分享有趣的电脑组装芝士</description><copyright>PC DIY</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://img.pcdiy.xyz/file/3129ba92ed7a95eb90e36.jpg</url><title>avatar</title><link>https://blog.pcdiy.xyz</link></image><lastBuildDate>Tue, 09 Jul 2024 12:30:47 +0000</lastBuildDate><managingEditor>PC DIY</managingEditor><ttl>60</ttl><webMaster>PC DIY</webMaster><item><title>文件列表 alist</title><link>https://blog.pcdiy.xyz/post/wen-jian-lie-biao-%20alist.html</link><description>![](https://img.pcdiy.xyz/file/f36f5788215c41957de42.png)&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>PC DIY</title><link>https://blog.pcdiy.xyz</link><description>分享有趣的电脑组装芝士</description><copyright>PC DIY</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://img.pcdiy.xyz/file/3129ba92ed7a95eb90e36.jpg</url><title>avatar</title><link>https://blog.pcdiy.xyz</link></image><lastBuildDate>Tue, 09 Jul 2024 16:22:46 +0000</lastBuildDate><managingEditor>PC DIY</managingEditor><ttl>60</ttl><webMaster>PC DIY</webMaster><item><title>文件列表 alist</title><link>https://blog.pcdiy.xyz/post/wen-jian-lie-biao-%20alist.html</link><description>![](https://img.pcdiy.xyz/file/f36f5788215c41957de42.png)&#13;
 &#13;
 # 如何部署&#13;
 &#13;
@@ -296,7 +296,7 @@ location / {&#13;
     		type='text/css'&gt; .footer { &#13;
     		display: none !important; } &#13;
     	&lt;/style&gt;&#13;
-    ```。</description><guid isPermaLink="true">https://blog.pcdiy.xyz/post/wen-jian-lie-biao-%20alist.html</guid><pubDate>Tue, 09 Jul 2024 11:50:32 +0000</pubDate></item><item><title>可视化 nginx 面板 nginx-proxy-manager</title><link>https://blog.pcdiy.xyz/post/ke-shi-hua-%20nginx%20-mian-ban-%20nginx-proxy-manager.html</link><description>![](https://img.pcdiy.xyz/file/01e28ac2be3566e2a17bc.png)&#13;
+    ```。</description><guid isPermaLink="true">https://blog.pcdiy.xyz/post/wen-jian-lie-biao-%20alist.html</guid><pubDate>Tue, 09 Jul 2024 11:50:32 +0000</pubDate></item><item><title>可视化 nginx 面板 nginx-proxy-manager</title><link>https://blog.pcdiy.xyz/post/ke-shi-hua-%20nginx%20-mian-ban-%20nginx-proxy-manager.html</link><description>![](https://img.pcdiy.xyz/file/97b89af62e8e85de001e8.png)&#13;
 &#13;
 # 更新系统环境&#13;
 &#13;
