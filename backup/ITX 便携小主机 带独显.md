@@ -1,5 +1,3 @@
-# ITX 便携小主机 带独显
-
 # CPU: [英特尔® 酷睿™ i3-12100F 处理器](https://www.intel.cn/content/www/cn/zh/products/sku/132223/intel-core-i312100f-processor-12m-cache-up-to-4-30-ghz/specifications.html)
 
 ​![](https://img.pcdiy.xyz/file/e9175f36b93113c4e02c1.png)​
