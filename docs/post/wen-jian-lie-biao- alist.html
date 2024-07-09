@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark-blue" data-light-theme="dark" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    <link rel="icon" href="https://img.pcdiy.xyz/file/3129ba92ed7a95eb90e36.jpg">
+<meta name="description" content="# 如何部署
+
+```powershell
+docker run -d \
+	--name=alist \
+	--restart=unless-stopped \
+	-v /home/alist:/opt/alist/data \
+	-p 5244:5244 \
+	-e PUID=0 \
+	-e PGID=0 \
+	-e UMASK=022 \
+	xhofe/alist:latest
+```
+
+# 默认账户密码
+
+用户名: `admin`​
+
+密码设置命令：
+
+```powershell
+docker exec -it alist ./alist admin set XXXXXX
+```
+
+其中 `alsit`​ 为 `容器名`​ ，与 `--name=alist`​ 设置的一致
+
+# `nginx`​ 文件的设置 (非必要，用于解决无法上传大文件的问题)
+
+```nginx
+location / {
+  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  proxy_set_header X-Forwarded-Proto $scheme;
+  proxy_set_header Host $http_host;
+  proxy_set_header X-Real-IP $remote_addr;
+  proxy_set_header Range $http_range;
+	proxy_set_header If-Range $http_if_range;
+  proxy_redirect off;
+  proxy_pass http://127.0.0.1:5244;
+  # the max size of file to upload
+  client_max_body_size 20000m;
+}
+```
+
+# 页面美化
+
+## 自定义头部
+
+1. 自定义 API 背景
+
+    ```javascript
+    /*白天背景图*/
+    .hope-ui-light{
+      background-image: url('https://bing.img.run/1920x1080.php') !important;
+      background-repeat:no-repeat;background-size:cover;background-attachment:fixed;background-position-x:center;
+    }
+    /*夜间背景图*/
+    .hope-ui-dark {
+        background-image: url('https://bing.img.run/1920x1080.php') !important;
+        background-repeat:no-repeat;background-size:cover;background-attachment:fixed;background-position-x:center;
+    }
+    ```
+
+    其中，`https://bing.img.run/1920x1080.php`​ 可自定义 `图片`​ 或 `api`​
+2. 列表透明
+
+    ```javascript
+    /*主列表白天模式透明*/
+     .obj-box.hope-stack.hope-c-dhzjXW.hope-c-PJLV.hope-c-PJLV-igScBhH-css {
+        background-color: rgba(255, 255, 255, 0.5) !important;
+    }
+    /*主列表夜间模式透明*/
+     .obj-box.hope-stack.hope-c-dhzjXW.hope-c-PJLV.hope-c-PJLV-iigjoxS-css {
+        background-color:rgb(0 0 0 / 50%) !important;
+    }
+    /*readme白天模式透明*/
+     .hope-c-PJLV.hope-c-PJLV-ikSuVsl-css {
+        background-color: rgba(255, 255, 255, 0.5) !important;
+    }
+    /*readme夜间模式透明*/
+     .hope-c-PJLV.hope-c-PJLV-iiuDLME-css {
+        background-color:rgb(0 0 0 / 50%) !important;
+    }
+
+    /*顶部右上角切换按钮透明*/
+     .hope-ui-light .hope-c-ivMHWx-hZistB-cv.hope-icon-button {
+        background-color: rgba(255, 255, 255, 0.5) !important;
+    }
+    .hope-ui-dark .hope-c-ivMHWx-hZistB-cv.hope-icon-button {
+        background-color:rgb(0 0 0 / 50%) !important;
+    }
+
+    /*右下角侧边栏按钮透明 第一个是白天 第二个是夜间*/
+     .hope-ui-light .hope-c-PJLV-ijgzmFG-css {
+        background-color: rgba(255, 255, 255, 0.5) !important;
+    }
+    .hope-ui-dark .hope-c-PJLV-ijgzmFG-css {
+        background-color:rgb(0 0 0 / 50%) !important;
+    }
+
+    /*白天模式代码块透明*/
+     .hope-ui-light pre {
+        background-color: rgba(255, 255, 255, 0.1)!important;
+    }
+    /*夜间模式代码块透明*/
+     .hope-ui-dark pre {
+        background-color: rgba(255, 255, 255, 0)!important;
+    }
+
+    /*左侧侧边栏目录*/
+    /*白天模式*/
+     .hope-ui-light .hope-c-PJLV-ieGWMbI-css {
+        background: rgba(255, 255, 255, 0.5) !important;
+    }
+    /*夜间模式*/
+     .hope-ui-dark .hope-c-PJLV-ieGWMbI-css {
+        background-color:rgb(0 0 0 / 50%) !important;
+    }
+
+    /* 返回顶部 */
+     .hope-c-PJLV-ihVEsOa-css {
+        background: rgba(255, 255, 255, 0.5) !important;
+    }
+    .hope-ui-dark .hope-c-PJLV-ihVEsOa-css {
+        background-color:rgb(0 0 0 / 50%) !important;
+    }
+
+    /*正常情况未使用吸附功能*/
+    /*顶部*/
+     .hope-c-PJLV-ikaMhsQ-css {
+        background: rgba(255, 255, 255, 0) !important;
+    }
+    /*导航条*/ 
+    /*白天模式*/
+     .hope-ui-light .hope-c-PJLV-idaeksS-css {
+        background-color: rgba(255, 255, 255, 0.5) !important;
+        border-radius: var(--hope-radii-xl) !important;
+    }
+    /*夜间模式*/
+     .hope-ui-dark .hope-c-PJLV-idaeksS-css {
+        background-color:rgb(0 0 0 / 50%) !important;
+        border-radius: var(--hope-radii-xl) !important;
+    }
+    /* 吸附到页面顶部 */
+    /*顶部*/
+     .hope-c-PJLV-icWrYmg-css {
+        background: rgba(255, 255, 255, 0) !important;
+    }
+    /*导航条*/
+     .hope-c-PJLV-icKsjdm-css::after {
+        background: rgba(255, 255, 255, 0) !important;
+    }
+    /*白天模式*/
+     .hope-ui-light .hope-c-PJLV-icKsjdm-css {
+        background-color: rgba(255, 255, 255, 0.5) !important;
+        border-radius: var(--hope-radii-xl) !important;
+    }
+    /*夜间模式*/
+     .hope-ui-dark .hope-c-PJLV-icKsjdm-css {
+        background-color:rgb(0 0 0 / 50%) !important;
+        border-radius: var(--hope-radii-xl) !important;
+    }
+
+    /*仅吸附导航栏*/
+    /*导航条*/
+     .hope-c-PJLV-ifdXShc-css::after {
+        background: rgba(255, 255, 255, 0) !important;
+    }
+    /*白天模式*/
+     .hope-ui-light .hope-c-hrsMRY {
+        background-color: rgba(255, 255, 255, 0.5) !important;
+        border-radius: var(--hope-radii-xl) !important;
+    }
+    /*夜间模式*/
+     .hope-ui-dark .hope-c-hrsMRY {
+        background-color:rgb(0 0 0 / 50%) !important;
+        border-radius: var(--hope-radii-xl) !important;
+    }
+    ```
+3. 字体相关
+
+    * 环境变量
+
+      ```html
+      <!--引入字体，全局字体使用-->
+      <link rel='stylesheet' href='https://npm.elemecdn.com/lxgw-wenkai-webfont@1.1.0/lxgwwenkai-regular.css' />
+
+      <!-- Font6，自定义底部使用和看板娘使用的图标和字体文件-->
+      <link type='text/css' rel='stylesheet' href='https://npm.elemecdn.com/font6pro@6.3.0/css/fontawesome.min.css' media='all'>
+      <link href='https://npm.elemecdn.com/font6pro@6.3.0/css/all.min.css' rel='stylesheet'>
+      ```
+    * 替换字体
+
+      ```javascript
+      /*全局字体*/
+       * {
+          font-family:LXGW WenKai
+      }
+      * {
+          font-weight:bold
+      }
+      body {
+          font-family: LXGW WenKai;
+      }
+      ```
+
+## 美化 自定义内容
+
+1. 延迟加载
+
+    ```html
+    <!--延迟加载-->
+    <!--如果要写自定义内容建议都加到这个延迟加载的范围内-->
+    <div id='customize' style='display: none;'>
+        <div>
+    	<!--自定义内容都应加在该部分-->
+        </div>
+    <!--延迟加载配套使用JS-->
+    <script>
+        let interval = setInterval(() => {
+            if (document.querySelector('.footer')) {
+                document.querySelector('#customize').style.display = '';
+                clearInterval(interval);
+            }
+        }, 200);
+    </script>
+    ```
+2. 底部自定义
+
+    ```html
+            <br />
+            <center class='dibu'>
+
+                <div style='font-size: 20px; font-weight: bold;'>
+                    <span class='nav-item'>
+                        <a class='nav-link' href='http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=vS4Jyt8wSecObdv7LNLtwxP7U_SBIeqg&authKey=5UXdAh1sOrSevtuUpHJOZ02BjE9STWrEXdzwArqBQ3ooeJmeUtNei84%2BGmFbpt4J&noverify=0&group_code=885781238'
+                            target='_blank'>
+                            <i class='fab fa-qq' style='color:#FE9900' aria-hidden='true'>
+                            </i>
+                            QQ |
+                        </a>
+                    </span>
+                    <span class='nav-item'>
+                        <a class='nav-link' href='https://kdocs.cn/l/cbHE1IEOZyOj' target='_blank'>
+                            <i class='fa-duotone fa-envelope-open' style='color:#FE9900' aria-hidden='true'>
+                            </i>
+                            文档 |
+                        </a>
+                    </span>
+                    <span class='nav-item'>
+                        <a class='nav-link' href='https://blog.pcdiy.xyz' target='_blank'>
+                            <i class='fas fa-edit' style='color:#FE9900' aria-hidden='true'>
+                            </i>
+                            博客 |
+                        </a>
+                    </span>
+                    <span class='nav-item'>
+                        <a class='nav-link' href='https://tieba.baidu.com/f?kw=diy%E9%9B%B6%E4%BB%B6%E7%BB%84%E8%A3%85&ie=utf-8' target='_blank'>
+                            <i class='fas fa-comment-lines' style='color:#FE9900;' aria-hidden='true'>
+                            </i>
+                            贴吧 |
+                        </a>
+                    </span>
+                    <span class='nav-item'>
+                        <a class='nav-link' href='https://nezha.pcdiy.xyz' target='_blank'>
+                            <i class='fa fa-tachometer' style='color:#FE9900;' aria-hidden='true'>
+                            </i>
+                            探针 |
+                        </a>
+                    </span>
+                    <span class='nav-item'>
+                        <a class='nav-link' href='https://bing.pcdiy.xyz' target='_blank'>
+                            <i class='fa fa-wifi' style='color:#FE9900' aria-hidden='true'>
+                            </i>
+                            AI |
+                        </a>
+                    </span>
+                    <!--后台入口-->
+                    <span class='nav-item'>
+                        <a class='nav-link' href='/@manage' target='_blank'>
+                            <i class='fa-solid fa-folder-gear' style='color:#FE9900;' aria-hidden='true'>
+                            </i>
+                            管理 |
+                        </a>
+                    </span>
+                    <!--版权，请尊重作者-->
+                    <span class='nav-item'>
+                        <a class='nav-link' href='https://github.com/Xhofe/alist' target='_blank'>
+                            <i class='fa-solid fa-copyright' style='color:#FE9900;' aria-hidden='true'>
+                            </i>
+                            版权
+                        </a>
+                    </span>
+    				<br />
+    ```
+3. 去掉 `power by`​ 和 `管理`​
+
+    ```html
+    	<!---去掉底部文字--->
+    	<style
+    		type='text/css'> .footer { 
+    		display: none !important; } 
+    	</style>
+    ```。">
+<meta property="og:title" content="文件列表 alist">
+<meta property="og:description" content="# 如何部署
+
+```powershell
+docker run -d \
+	--name=alist \
+	--restart=unless-stopped \
+	-v /home/alist:/opt/alist/data \
+	-p 5244:5244 \
+	-e PUID=0 \
+	-e PGID=0 \
+	-e UMASK=022 \
+	xhofe/alist:latest
+```
+
+# 默认账户密码
+
+用户名: `admin`​
+
+密码设置命令：
+
+```powershell
+docker exec -it alist ./alist admin set XXXXXX
+```
+
+其中 `alsit`​ 为 `容器名`​ ，与 `--name=alist`​ 设置的一致
+
+# `nginx`​ 文件的设置 (非必要，用于解决无法上传大文件的问题)
+
+```nginx
+location / {
+  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  proxy_set_header X-Forwarded-Proto $scheme;
+  proxy_set_header Host $http_host;
+  proxy_set_header X-Real-IP $remote_addr;
+  proxy_set_header Range $http_range;
+	proxy_set_header If-Range $http_if_range;
+  proxy_redirect off;
+  proxy_pass http://127.0.0.1:5244;
+  # the max size of file to upload
+  client_max_body_size 20000m;
+}
+```
+
+# 页面美化
+
+## 自定义头部
+
+1. 自定义 API 背景
+
+    ```javascript
+    /*白天背景图*/
+    .hope-ui-light{
+      background-image: url('https://bing.img.run/1920x1080.php') !important;
+      background-repeat:no-repeat;background-size:cover;background-attachment:fixed;background-position-x:center;
+    }
+    /*夜间背景图*/
+    .hope-ui-dark {
+        background-image: url('https://bing.img.run/1920x1080.php') !important;
+        background-repeat:no-repeat;background-size:cover;background-attachment:fixed;background-position-x:center;
+    }
+    ```
+
+    其中，`https://bing.img.run/1920x1080.php`​ 可自定义 `图片`​ 或 `api`​
+2. 列表透明
+
+    ```javascript
+    /*主列表白天模式透明*/
+     .obj-box.hope-stack.hope-c-dhzjXW.hope-c-PJLV.hope-c-PJLV-igScBhH-css {
+        background-color: rgba(255, 255, 255, 0.5) !important;
+    }
+    /*主列表夜间模式透明*/
+     .obj-box.hope-stack.hope-c-dhzjXW.hope-c-PJLV.hope-c-PJLV-iigjoxS-css {
+        background-color:rgb(0 0 0 / 50%) !important;
+    }
+    /*readme白天模式透明*/
+     .hope-c-PJLV.hope-c-PJLV-ikSuVsl-css {
+        background-color: rgba(255, 255, 255, 0.5) !important;
+    }
+    /*readme夜间模式透明*/
+     .hope-c-PJLV.hope-c-PJLV-iiuDLME-css {
+        background-color:rgb(0 0 0 / 50%) !important;
+    }
+
+    /*顶部右上角切换按钮透明*/
+     .hope-ui-light .hope-c-ivMHWx-hZistB-cv.hope-icon-button {
+        background-color: rgba(255, 255, 255, 0.5) !important;
+    }
+    .hope-ui-dark .hope-c-ivMHWx-hZistB-cv.hope-icon-button {
+        background-color:rgb(0 0 0 / 50%) !important;
+    }
+
+    /*右下角侧边栏按钮透明 第一个是白天 第二个是夜间*/
+     .hope-ui-light .hope-c-PJLV-ijgzmFG-css {
+        background-color: rgba(255, 255, 255, 0.5) !important;
+    }
+    .hope-ui-dark .hope-c-PJLV-ijgzmFG-css {
+        background-color:rgb(0 0 0 / 50%) !important;
+    }
+
+    /*白天模式代码块透明*/
+     .hope-ui-light pre {
+        background-color: rgba(255, 255, 255, 0.1)!important;
+    }
+    /*夜间模式代码块透明*/
+     .hope-ui-dark pre {
+        background-color: rgba(255, 255, 255, 0)!important;
+    }
+
+    /*左侧侧边栏目录*/
+    /*白天模式*/
+     .hope-ui-light .hope-c-PJLV-ieGWMbI-css {
+        background: rgba(255, 255, 255, 0.5) !important;
+    }
+    /*夜间模式*/
+     .hope-ui-dark .hope-c-PJLV-ieGWMbI-css {
+        background-color:rgb(0 0 0 / 50%) !important;
+    }
+
+    /* 返回顶部 */
+     .hope-c-PJLV-ihVEsOa-css {
+        background: rgba(255, 255, 255, 0.5) !important;
+    }
+    .hope-ui-dark .hope-c-PJLV-ihVEsOa-css {
+        background-color:rgb(0 0 0 / 50%) !important;
+    }
+
+    /*正常情况未使用吸附功能*/
+    /*顶部*/
+     .hope-c-PJLV-ikaMhsQ-css {
+        background: rgba(255, 255, 255, 0) !important;
+    }
+    /*导航条*/ 
+    /*白天模式*/
+     .hope-ui-light .hope-c-PJLV-idaeksS-css {
+        background-color: rgba(255, 255, 255, 0.5) !important;
+        border-radius: var(--hope-radii-xl) !important;
+    }
+    /*夜间模式*/
+     .hope-ui-dark .hope-c-PJLV-idaeksS-css {
+        background-color:rgb(0 0 0 / 50%) !important;
+        border-radius: var(--hope-radii-xl) !important;
+    }
+    /* 吸附到页面顶部 */
+    /*顶部*/
+     .hope-c-PJLV-icWrYmg-css {
+        background: rgba(255, 255, 255, 0) !important;
+    }
+    /*导航条*/
+     .hope-c-PJLV-icKsjdm-css::after {
+        background: rgba(255, 255, 255, 0) !important;
+    }
+    /*白天模式*/
+     .hope-ui-light .hope-c-PJLV-icKsjdm-css {
+        background-color: rgba(255, 255, 255, 0.5) !important;
+        border-radius: var(--hope-radii-xl) !important;
+    }
+    /*夜间模式*/
+     .hope-ui-dark .hope-c-PJLV-icKsjdm-css {
+        background-color:rgb(0 0 0 / 50%) !important;
+        border-radius: var(--hope-radii-xl) !important;
+    }
+
+    /*仅吸附导航栏*/
+    /*导航条*/
+     .hope-c-PJLV-ifdXShc-css::after {
+        background: rgba(255, 255, 255, 0) !important;
+    }
+    /*白天模式*/
+     .hope-ui-light .hope-c-hrsMRY {
+        background-color: rgba(255, 255, 255, 0.5) !important;
+        border-radius: var(--hope-radii-xl) !important;
+    }
+    /*夜间模式*/
+     .hope-ui-dark .hope-c-hrsMRY {
+        background-color:rgb(0 0 0 / 50%) !important;
+        border-radius: var(--hope-radii-xl) !important;
+    }
+    ```
+3. 字体相关
+
+    * 环境变量
+
+      ```html
+      <!--引入字体，全局字体使用-->
+      <link rel='stylesheet' href='https://npm.elemecdn.com/lxgw-wenkai-webfont@1.1.0/lxgwwenkai-regular.css' />
+
+      <!-- Font6，自定义底部使用和看板娘使用的图标和字体文件-->
+      <link type='text/css' rel='stylesheet' href='https://npm.elemecdn.com/font6pro@6.3.0/css/fontawesome.min.css' media='all'>
+      <link href='https://npm.elemecdn.com/font6pro@6.3.0/css/all.min.css' rel='stylesheet'>
+      ```
+    * 替换字体
+
+      ```javascript
+      /*全局字体*/
+       * {
+          font-family:LXGW WenKai
+      }
+      * {
+          font-weight:bold
+      }
+      body {
+          font-family: LXGW WenKai;
+      }
+      ```
+
+## 美化 自定义内容
+
+1. 延迟加载
+
+    ```html
+    <!--延迟加载-->
+    <!--如果要写自定义内容建议都加到这个延迟加载的范围内-->
+    <div id='customize' style='display: none;'>
+        <div>
+    	<!--自定义内容都应加在该部分-->
+        </div>
+    <!--延迟加载配套使用JS-->
+    <script>
+        let interval = setInterval(() => {
+            if (document.querySelector('.footer')) {
+                document.querySelector('#customize').style.display = '';
+                clearInterval(interval);
+            }
+        }, 200);
+    </script>
+    ```
+2. 底部自定义
+
+    ```html
+            <br />
+            <center class='dibu'>
+
+                <div style='font-size: 20px; font-weight: bold;'>
+                    <span class='nav-item'>
+                        <a class='nav-link' href='http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=vS4Jyt8wSecObdv7LNLtwxP7U_SBIeqg&authKey=5UXdAh1sOrSevtuUpHJOZ02BjE9STWrEXdzwArqBQ3ooeJmeUtNei84%2BGmFbpt4J&noverify=0&group_code=885781238'
+                            target='_blank'>
+                            <i class='fab fa-qq' style='color:#FE9900' aria-hidden='true'>
+                            </i>
+                            QQ |
+                        </a>
+                    </span>
+                    <span class='nav-item'>
+                        <a class='nav-link' href='https://kdocs.cn/l/cbHE1IEOZyOj' target='_blank'>
+                            <i class='fa-duotone fa-envelope-open' style='color:#FE9900' aria-hidden='true'>
+                            </i>
+                            文档 |
+                        </a>
+                    </span>
+                    <span class='nav-item'>
+                        <a class='nav-link' href='https://blog.pcdiy.xyz' target='_blank'>
+                            <i class='fas fa-edit' style='color:#FE9900' aria-hidden='true'>
+                            </i>
+                            博客 |
+                        </a>
+                    </span>
+                    <span class='nav-item'>
+                        <a class='nav-link' href='https://tieba.baidu.com/f?kw=diy%E9%9B%B6%E4%BB%B6%E7%BB%84%E8%A3%85&ie=utf-8' target='_blank'>
+                            <i class='fas fa-comment-lines' style='color:#FE9900;' aria-hidden='true'>
+                            </i>
+                            贴吧 |
+                        </a>
+                    </span>
+                    <span class='nav-item'>
+                        <a class='nav-link' href='https://nezha.pcdiy.xyz' target='_blank'>
+                            <i class='fa fa-tachometer' style='color:#FE9900;' aria-hidden='true'>
+                            </i>
+                            探针 |
+                        </a>
+                    </span>
+                    <span class='nav-item'>
+                        <a class='nav-link' href='https://bing.pcdiy.xyz' target='_blank'>
+                            <i class='fa fa-wifi' style='color:#FE9900' aria-hidden='true'>
+                            </i>
+                            AI |
+                        </a>
+                    </span>
+                    <!--后台入口-->
+                    <span class='nav-item'>
+                        <a class='nav-link' href='/@manage' target='_blank'>
+                            <i class='fa-solid fa-folder-gear' style='color:#FE9900;' aria-hidden='true'>
+                            </i>
+                            管理 |
+                        </a>
+                    </span>
+                    <!--版权，请尊重作者-->
+                    <span class='nav-item'>
+                        <a class='nav-link' href='https://github.com/Xhofe/alist' target='_blank'>
+                            <i class='fa-solid fa-copyright' style='color:#FE9900;' aria-hidden='true'>
+                            </i>
+                            版权
+                        </a>
+                    </span>
+    				<br />
+    ```
+3. 去掉 `power by`​ 和 `管理`​
+
+    ```html
+    	<!---去掉底部文字--->
+    	<style
+    		type='text/css'> .footer { 
+    		display: none !important; } 
+    	</style>
+    ```。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.pcdiy.xyz/post/wen-jian-lie-biao-%20alist.html">
+<meta property="og:image" content="https://img.pcdiy.xyz/file/3129ba92ed7a95eb90e36.jpg">
+<title>文件列表 alist</title>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">文件列表 alist</h1>
+<div class="title-right">
+    <a href="https://blog.pcdiy.xyz" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/yeslinyh/yeslinyh.github.io/issues/16" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题"style="display:none;">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h1>如何部署</h1>
+<div class="highlight highlight-source-powershell"><pre class="notranslate">docker run <span class="pl-k">-</span>d \
+	<span class="pl-k">--</span>name<span class="pl-k">=</span>alist \
+	<span class="pl-k">--</span>restart<span class="pl-k">=</span>unless<span class="pl-k">-</span>stopped \
+	<span class="pl-k">-</span>v <span class="pl-k">/</span>home<span class="pl-k">/</span>alist:<span class="pl-k">/</span>opt<span class="pl-k">/</span>alist<span class="pl-k">/</span><span class="pl-k">data</span> \
+	<span class="pl-k">-</span>p <span class="pl-c1">5244</span>:<span class="pl-c1">5244</span> \
+	<span class="pl-k">-</span>e PUID<span class="pl-k">=</span><span class="pl-c1">0</span> \
+	<span class="pl-k">-</span>e PGID<span class="pl-k">=</span><span class="pl-c1">0</span> \
+	<span class="pl-k">-</span>e UMASK<span class="pl-k">=</span><span class="pl-c1">022</span> \
+	xhofe<span class="pl-k">/</span>alist:latest</pre></div>
+<h1>默认账户密码</h1>
+<p>用户名: <code class="notranslate">admin</code>​</p>
+<p>密码设置命令：</p>
+<div class="highlight highlight-source-powershell"><pre class="notranslate">docker exec <span class="pl-k">-</span>it alist .<span class="pl-k">/</span>alist admin set XXXXXX</pre></div>
+<p>其中 <code class="notranslate">alsit</code>​ 为 <code class="notranslate">容器名</code>​ ，与 <code class="notranslate">--name=alist</code>​ 设置的一致</p>
+<h1><code class="notranslate">nginx</code>​ 文件的设置 (非必要，用于解决无法上传大文件的问题)</h1>
+<div class="highlight highlight-source-nginx"><pre class="notranslate"><span class="pl-k">location</span> <span class="pl-en">/ </span>{
+  <span class="pl-k">proxy_set_header</span> X-Forwarded-For <span class="pl-smi">$proxy_add_x_forwarded_for</span>;
+  <span class="pl-k">proxy_set_header</span> X-Forwarded-Proto <span class="pl-smi">$scheme</span>;
+  <span class="pl-k">proxy_set_header</span> Host <span class="pl-smi">$http_host</span>;
+  <span class="pl-k">proxy_set_header</span> X-Real-IP <span class="pl-smi">$remote_addr</span>;
+  <span class="pl-k">proxy_set_header</span> Range <span class="pl-smi">$http_range</span>;
+	<span class="pl-k">proxy_set_header</span> If-Range <span class="pl-smi">$http_if_range</span>;
+  <span class="pl-k">proxy_redirect</span><span class="pl-c1"> off</span>;
+  <span class="pl-k">proxy_pass</span> http://127.0.0.1:5244;
+  <span class="pl-c"># the max size of file to upload</span>
+  <span class="pl-k">client_max_body_size</span> <span class="pl-c1">20000m</span>;
+}</pre></div>
+<h1>页面美化</h1>
+<h2>自定义头部</h2>
+<ol>
+<li>
+<p>自定义 API 背景</p>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-c">/*白天背景图*/</span>
+<span class="pl-kos">.</span><span class="pl-s1">hope</span><span class="pl-c1">-</span><span class="pl-s1">ui</span><span class="pl-c1">-</span><span class="pl-s1">light</span><span class="pl-kos"></span><span class="pl-kos">{</span>
+  <span class="pl-s1">background</span><span class="pl-c1">-</span><span class="pl-en">image</span>: <span class="pl-s1">url</span><span class="pl-kos">(</span><span class="pl-s">"https://bing.img.run/1920x1080.php"</span><span class="pl-kos">)</span><span class="pl-kos"></span> <span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos">;</span>
+  <span class="pl-s1">background</span><span class="pl-c1">-</span><span class="pl-s1">repeat</span>:<span class="pl-s1">no</span><span class="pl-c1">-</span><span class="pl-s1">repeat</span><span class="pl-kos">;</span><span class="pl-s1">background</span><span class="pl-c1">-</span><span class="pl-s1">size</span>:<span class="pl-s1">cover</span><span class="pl-kos">;</span><span class="pl-s1">background</span><span class="pl-c1">-</span><span class="pl-s1">attachment</span>:<span class="pl-s1">fixed</span><span class="pl-kos">;</span><span class="pl-s1">background</span><span class="pl-c1">-</span><span class="pl-s1">position</span><span class="pl-c1">-</span><span class="pl-s1">x</span>:<span class="pl-s1">center</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+<span class="pl-c">/*夜间背景图*/</span>
+<span class="pl-kos">.</span><span class="pl-s1">hope</span><span class="pl-c1">-</span><span class="pl-s1">ui</span><span class="pl-c1">-</span><span class="pl-s1">dark</span><span class="pl-kos"></span> <span class="pl-kos">{</span>
+    <span class="pl-s1">background</span><span class="pl-c1">-</span><span class="pl-en">image</span>: <span class="pl-s1">url</span><span class="pl-kos">(</span><span class="pl-s">"https://bing.img.run/1920x1080.php"</span><span class="pl-kos">)</span><span class="pl-kos"></span> <span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos">;</span>
+    <span class="pl-s1">background</span><span class="pl-c1">-</span><span class="pl-s1">repeat</span>:<span class="pl-s1">no</span><span class="pl-c1">-</span><span class="pl-s1">repeat</span><span class="pl-kos">;</span><span class="pl-s1">background</span><span class="pl-c1">-</span><span class="pl-s1">size</span>:<span class="pl-s1">cover</span><span class="pl-kos">;</span><span class="pl-s1">background</span><span class="pl-c1">-</span><span class="pl-s1">attachment</span>:<span class="pl-s1">fixed</span><span class="pl-kos">;</span><span class="pl-s1">background</span><span class="pl-c1">-</span><span class="pl-s1">position</span><span class="pl-c1">-</span><span class="pl-s1">x</span>:<span class="pl-s1">center</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span></pre></div>
+<p>其中，<code class="notranslate">https://bing.img.run/1920x1080.php</code>​ 可自定义 <code class="notranslate">图片</code>​ 或 <code class="notranslate">api</code>​</p>
+</li>
+<li>
+<p>列表透明</p>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-c">/*主列表白天模式透明*/</span>
+ <span class="pl-kos">.</span><span class="pl-s1">obj</span><span class="pl-c1">-</span><span class="pl-s1">box</span><span class="pl-kos">.</span><span class="pl-c1">hope</span><span class="pl-c1">-</span><span class="pl-s1">stack</span><span class="pl-kos">.</span><span class="pl-c1">hope</span><span class="pl-c1">-</span><span class="pl-s1">c</span><span class="pl-c1">-</span><span class="pl-s1">dhzjXW</span><span class="pl-kos">.</span><span class="pl-c1">hope</span><span class="pl-c1">-</span><span class="pl-s1">c</span><span class="pl-c1">-</span><span class="pl-c1">PJLV</span><span class="pl-kos">.</span><span class="pl-c1">hope</span><span class="pl-c1">-</span><span class="pl-s1">c</span><span class="pl-c1">-</span><span class="pl-c1">PJLV</span><span class="pl-c1">-</span><span class="pl-s1">igScBhH</span><span class="pl-c1">-</span><span class="pl-s1">css</span><span class="pl-kos"></span> <span class="pl-kos">{</span>
+    <span class="pl-s1">background</span><span class="pl-c1">-</span><span class="pl-s1">color</span>: <span class="pl-en">rgba</span><span class="pl-kos">(</span><span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">0.5</span><span class="pl-kos">)</span> <span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+<span class="pl-c">/*主列表夜间模式透明*/</span>
+ <span class="pl-kos">.</span><span class="pl-s1">obj</span><span class="pl-c1">-</span><span class="pl-s1">box</span><span class="pl-kos">.</span><span class="pl-c1">hope</span><span class="pl-c1">-</span><span class="pl-s1">stack</span><span class="pl-kos">.</span><span class="pl-c1">hope</span><span class="pl-c1">-</span><span class="pl-s1">c</span><span class="pl-c1">-</span><span class="pl-s1">dhzjXW</span><span class="pl-kos">.</span><span class="pl-c1">hope</span><span class="pl-c1">-</span><span class="pl-s1">c</span><span class="pl-c1">-</span><span class="pl-c1">PJLV</span><span class="pl-kos">.</span><span class="pl-c1">hope</span><span class="pl-c1">-</span><span class="pl-s1">c</span><span class="pl-c1">-</span><span class="pl-c1">PJLV</span><span class="pl-c1">-</span><span class="pl-s1">iigjoxS</span><span class="pl-c1">-</span><span class="pl-s1">css</span><span class="pl-kos"></span> <span class="pl-kos">{</span>
+    <span class="pl-s1">background</span><span class="pl-c1">-</span><span class="pl-en">color</span>:<span class="pl-s1">rgb</span><span class="pl-kos">(</span><span class="pl-c1">0</span> <span class="pl-c1">0</span> <span class="pl-c1">0</span> <span class="pl-c1">/</span> <span class="pl-c1">50</span><span class="pl-c1">%</span><span class="pl-kos">)</span> <span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos"></span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+<span class="pl-c">/*readme白天模式透明*/</span>
+ <span class="pl-kos">.</span><span class="pl-s1">hope</span><span class="pl-c1">-</span><span class="pl-s1">c</span><span class="pl-c1">-</span><span class="pl-c1">PJLV</span><span class="pl-kos">.</span><span class="pl-c1">hope</span><span class="pl-c1">-</span><span class="pl-s1">c</span><span class="pl-c1">-</span><span class="pl-c1">PJLV</span><span class="pl-c1">-</span><span class="pl-s1">ikSuVsl</span><span class="pl-c1">-</span><span class="pl-s1">css</span><span class="pl-kos"></span> <span class="pl-kos">{</span>
+    <span class="pl-s1">background</span><span class="pl-c1">-</span><span class="pl-s1">color</span>: <span class="pl-en">rgba</span><span class="pl-kos">(</span><span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">0.5</span><span class="pl-kos">)</span> <span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+<span class="pl-c">/*readme夜间模式透明*/</span>
+ <span class="pl-kos">.</span><span class="pl-s1">hope</span><span class="pl-c1">-</span><span class="pl-s1">c</span><span class="pl-c1">-</span><span class="pl-c1">PJLV</span><span class="pl-kos">.</span><span class="pl-c1">hope</span><span class="pl-c1">-</span><span class="pl-s1">c</span><span class="pl-c1">-</span><span class="pl-c1">PJLV</span><span class="pl-c1">-</span><span class="pl-s1">iiuDLME</span><span class="pl-c1">-</span><span class="pl-s1">css</span><span class="pl-kos"></span> <span class="pl-kos">{</span>
+    <span class="pl-s1">background</span><span class="pl-c1">-</span><span class="pl-en">color</span>:<span class="pl-s1">rgb</span><span class="pl-kos">(</span><span class="pl-c1">0</span> <span class="pl-c1">0</span> <span class="pl-c1">0</span> <span class="pl-c1">/</span> <span class="pl-c1">50</span><span class="pl-c1">%</span><span class="pl-kos">)</span> <span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos"></span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">/*顶部右上角切换按钮透明*/</span>
+ <span class="pl-kos">.</span><span class="pl-s1">hope</span><span class="pl-c1">-</span><span class="pl-s1">ui</span><span class="pl-c1">-</span><span class="pl-s1">light</span> <span class="pl-kos">.</span><span class="pl-c1">hope</span><span class="pl-c1">-</span><span class="pl-s1">c</span><span class="pl-c1">-</span><span class="pl-s1">ivMHWx</span><span class="pl-c1">-</span><span class="pl-s1">hZistB</span><span class="pl-c1">-</span><span class="pl-s1">cv</span><span class="pl-kos">.</span><span class="pl-c1">hope</span><span class="pl-c1">-</span><span class="pl-s1">icon</span><span class="pl-c1">-</span><span class="pl-s1">button</span><span class="pl-kos"></span> <span class="pl-kos">{</span>
+    <span class="pl-s1">background</span><span class="pl-c1">-</span><span class="pl-s1">color</span>: <span class="pl-en">rgba</span><span class="pl-kos">(</span><span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">0.5</span><span class="pl-kos">)</span> <span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+<span class="pl-kos">.</span><span class="pl-s1">hope</span><span class="pl-c1">-</span><span class="pl-s1">ui</span><span class="pl-c1">-</span><span class="pl-s1">dark</span> <span class="pl-kos">.</span><span class="pl-c1">hope</span><span class="pl-c1">-</span><span class="pl-s1">c</span><span class="pl-c1">-</span><span class="pl-s1">ivMHWx</span><span class="pl-c1">-</span><span class="pl-s1">hZistB</span><span class="pl-c1">-</span><span class="pl-s1">cv</span><span class="pl-kos">.</span><span class="pl-c1">hope</span><span class="pl-c1">-</span><span class="pl-s1">icon</span><span class="pl-c1">-</span><span class="pl-s1">button</span><span class="pl-kos"></span> <span class="pl-kos">{</span>
+    <span class="pl-s1">background</span><span class="pl-c1">-</span><span class="pl-en">color</span>:<span class="pl-s1">rgb</span><span class="pl-kos">(</span><span class="pl-c1">0</span> <span class="pl-c1">0</span> <span class="pl-c1">0</span> <span class="pl-c1">/</span> <span class="pl-c1">50</span><span class="pl-c1">%</span><span class="pl-kos">)</span> <span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos"></span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">/*右下角侧边栏按钮透明 第一个是白天 第二个是夜间*/</span>
+ <span class="pl-kos">.</span><span class="pl-s1">hope</span><span class="pl-c1">-</span><span class="pl-s1">ui</span><span class="pl-c1">-</span><span class="pl-s1">light</span> <span class="pl-kos">.</span><span class="pl-c1">hope</span><span class="pl-c1">-</span><span class="pl-s1">c</span><span class="pl-c1">-</span><span class="pl-c1">PJLV</span><span class="pl-c1">-</span><span class="pl-s1">ijgzmFG</span><span class="pl-c1">-</span><span class="pl-s1">css</span><span class="pl-kos"></span> <span class="pl-kos">{</span>
+    <span class="pl-s1">background</span><span class="pl-c1">-</span><span class="pl-s1">color</span>: <span class="pl-en">rgba</span><span class="pl-kos">(</span><span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">0.5</span><span class="pl-kos">)</span> <span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+<span class="pl-kos">.</span><span class="pl-s1">hope</span><span class="pl-c1">-</span><span class="pl-s1">ui</span><span class="pl-c1">-</span><span class="pl-s1">dark</span> <span class="pl-kos">.</span><span class="pl-c1">hope</span><span class="pl-c1">-</span><span class="pl-s1">c</span><span class="pl-c1">-</span><span class="pl-c1">PJLV</span><span class="pl-c1">-</span><span class="pl-s1">ijgzmFG</span><span class="pl-c1">-</span><span class="pl-s1">css</span><span class="pl-kos"></span> <span class="pl-kos">{</span>
+    <span class="pl-s1">background</span><span class="pl-c1">-</span><span class="pl-en">color</span>:<span class="pl-s1">rgb</span><span class="pl-kos">(</span><span class="pl-c1">0</span> <span class="pl-c1">0</span> <span class="pl-c1">0</span> <span class="pl-c1">/</span> <span class="pl-c1">50</span><span class="pl-c1">%</span><span class="pl-kos">)</span> <span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos"></span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">/*白天模式代码块透明*/</span>
+ <span class="pl-kos">.</span><span class="pl-s1">hope</span><span class="pl-c1">-</span><span class="pl-s1">ui</span><span class="pl-c1">-</span><span class="pl-s1">light</span> <span class="pl-s1">pre</span> <span class="pl-kos">{</span>
+    <span class="pl-s1">background</span><span class="pl-c1">-</span><span class="pl-s1">color</span>: <span class="pl-en">rgba</span><span class="pl-kos">(</span><span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">0.1</span><span class="pl-kos">)</span><span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+<span class="pl-c">/*夜间模式代码块透明*/</span>
+ <span class="pl-kos">.</span><span class="pl-s1">hope</span><span class="pl-c1">-</span><span class="pl-s1">ui</span><span class="pl-c1">-</span><span class="pl-s1">dark</span> <span class="pl-s1">pre</span> <span class="pl-kos">{</span>
+    <span class="pl-s1">background</span><span class="pl-c1">-</span><span class="pl-s1">color</span>: <span class="pl-en">rgba</span><span class="pl-kos">(</span><span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">)</span><span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">/*左侧侧边栏目录*/</span>
+<span class="pl-c">/*白天模式*/</span>
+ <span class="pl-kos">.</span><span class="pl-s1">hope</span><span class="pl-c1">-</span><span class="pl-s1">ui</span><span class="pl-c1">-</span><span class="pl-s1">light</span> <span class="pl-kos">.</span><span class="pl-c1">hope</span><span class="pl-c1">-</span><span class="pl-s1">c</span><span class="pl-c1">-</span><span class="pl-c1">PJLV</span><span class="pl-c1">-</span><span class="pl-s1">ieGWMbI</span><span class="pl-c1">-</span><span class="pl-s1">css</span> <span class="pl-kos">{</span>
+    <span class="pl-c1">background</span>: <span class="pl-en">rgba</span><span class="pl-kos">(</span><span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">0.5</span><span class="pl-kos">)</span> <span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+<span class="pl-c">/*夜间模式*/</span>
+ <span class="pl-kos">.</span><span class="pl-c1">hope</span><span class="pl-c1">-</span><span class="pl-s1">ui</span><span class="pl-c1">-</span><span class="pl-s1">dark</span> <span class="pl-kos">.</span><span class="pl-c1">hope</span><span class="pl-c1">-</span><span class="pl-s1">c</span><span class="pl-c1">-</span><span class="pl-c1">PJLV</span><span class="pl-c1">-</span><span class="pl-s1">ieGWMbI</span><span class="pl-c1">-</span><span class="pl-s1">css</span><span class="pl-kos"></span> <span class="pl-kos">{</span>
+    <span class="pl-s1">background</span><span class="pl-c1">-</span><span class="pl-en">color</span>:<span class="pl-s1">rgb</span><span class="pl-kos">(</span><span class="pl-c1">0</span> <span class="pl-c1">0</span> <span class="pl-c1">0</span> <span class="pl-c1">/</span> <span class="pl-c1">50</span><span class="pl-c1">%</span><span class="pl-kos">)</span> <span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos"></span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">/* 返回顶部 */</span>
+ <span class="pl-kos">.</span><span class="pl-s1">hope</span><span class="pl-c1">-</span><span class="pl-s1">c</span><span class="pl-c1">-</span><span class="pl-c1">PJLV</span><span class="pl-c1">-</span><span class="pl-s1">ihVEsOa</span><span class="pl-c1">-</span><span class="pl-s1">css</span> <span class="pl-kos">{</span>
+    <span class="pl-c1">background</span>: <span class="pl-en">rgba</span><span class="pl-kos">(</span><span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">0.5</span><span class="pl-kos">)</span> <span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+<span class="pl-kos">.</span><span class="pl-c1">hope</span><span class="pl-c1">-</span><span class="pl-s1">ui</span><span class="pl-c1">-</span><span class="pl-s1">dark</span> <span class="pl-kos">.</span><span class="pl-c1">hope</span><span class="pl-c1">-</span><span class="pl-s1">c</span><span class="pl-c1">-</span><span class="pl-c1">PJLV</span><span class="pl-c1">-</span><span class="pl-s1">ihVEsOa</span><span class="pl-c1">-</span><span class="pl-s1">css</span><span class="pl-kos"></span> <span class="pl-kos">{</span>
+    <span class="pl-s1">background</span><span class="pl-c1">-</span><span class="pl-en">color</span>:<span class="pl-s1">rgb</span><span class="pl-kos">(</span><span class="pl-c1">0</span> <span class="pl-c1">0</span> <span class="pl-c1">0</span> <span class="pl-c1">/</span> <span class="pl-c1">50</span><span class="pl-c1">%</span><span class="pl-kos">)</span> <span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos"></span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">/*正常情况未使用吸附功能*/</span>
+<span class="pl-c">/*顶部*/</span>
+ <span class="pl-kos">.</span><span class="pl-s1">hope</span><span class="pl-c1">-</span><span class="pl-s1">c</span><span class="pl-c1">-</span><span class="pl-c1">PJLV</span><span class="pl-c1">-</span><span class="pl-s1">ikaMhsQ</span><span class="pl-c1">-</span><span class="pl-s1">css</span> <span class="pl-kos">{</span>
+    <span class="pl-c1">background</span>: <span class="pl-en">rgba</span><span class="pl-kos">(</span><span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">)</span> <span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+<span class="pl-c">/*导航条*/</span> 
+<span class="pl-c">/*白天模式*/</span>
+ <span class="pl-kos">.</span><span class="pl-c1">hope</span><span class="pl-c1">-</span><span class="pl-s1">ui</span><span class="pl-c1">-</span><span class="pl-s1">light</span> <span class="pl-kos">.</span><span class="pl-c1">hope</span><span class="pl-c1">-</span><span class="pl-s1">c</span><span class="pl-c1">-</span><span class="pl-c1">PJLV</span><span class="pl-c1">-</span><span class="pl-s1">idaeksS</span><span class="pl-c1">-</span><span class="pl-s1">css</span><span class="pl-kos"></span> <span class="pl-kos">{</span>
+    <span class="pl-s1">background</span><span class="pl-c1">-</span><span class="pl-s1">color</span>: <span class="pl-en">rgba</span><span class="pl-kos">(</span><span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">0.5</span><span class="pl-kos">)</span> <span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos">;</span>
+    <span class="pl-s1">border</span><span class="pl-c1">-</span><span class="pl-en">radius</span>: <span class="pl-k">var</span><span class="pl-kos">(</span><span class="pl-c1">--</span><span class="pl-s1">hope</span><span class="pl-c1">-</span><span class="pl-s1">radii</span><span class="pl-c1">-</span><span class="pl-s1">xl</span><span class="pl-kos">)</span><span class="pl-kos"></span> <span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+<span class="pl-c">/*夜间模式*/</span>
+ <span class="pl-kos">.</span><span class="pl-s1">hope</span><span class="pl-c1">-</span><span class="pl-s1">ui</span><span class="pl-c1">-</span><span class="pl-s1">dark</span> <span class="pl-kos">.</span><span class="pl-c1">hope</span><span class="pl-c1">-</span><span class="pl-s1">c</span><span class="pl-c1">-</span><span class="pl-c1">PJLV</span><span class="pl-c1">-</span><span class="pl-s1">idaeksS</span><span class="pl-c1">-</span><span class="pl-s1">css</span><span class="pl-kos"></span> <span class="pl-kos">{</span>
+    <span class="pl-s1">background</span><span class="pl-c1">-</span><span class="pl-en">color</span>:<span class="pl-s1">rgb</span><span class="pl-kos">(</span><span class="pl-c1">0</span> <span class="pl-c1">0</span> <span class="pl-c1">0</span> <span class="pl-c1">/</span> <span class="pl-c1">50</span><span class="pl-c1">%</span><span class="pl-kos">)</span> <span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos"></span><span class="pl-kos">;</span>
+    <span class="pl-s1">border</span><span class="pl-c1">-</span><span class="pl-en">radius</span>: <span class="pl-k">var</span><span class="pl-kos">(</span><span class="pl-c1">--</span><span class="pl-s1">hope</span><span class="pl-c1">-</span><span class="pl-s1">radii</span><span class="pl-c1">-</span><span class="pl-s1">xl</span><span class="pl-kos">)</span><span class="pl-kos"></span> <span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+<span class="pl-c">/* 吸附到页面顶部 */</span>
+<span class="pl-c">/*顶部*/</span>
+ <span class="pl-kos">.</span><span class="pl-s1">hope</span><span class="pl-c1">-</span><span class="pl-s1">c</span><span class="pl-c1">-</span><span class="pl-c1">PJLV</span><span class="pl-c1">-</span><span class="pl-s1">icWrYmg</span><span class="pl-c1">-</span><span class="pl-s1">css</span> <span class="pl-kos">{</span>
+    <span class="pl-c1">background</span>: <span class="pl-en">rgba</span><span class="pl-kos">(</span><span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">)</span> <span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+<span class="pl-c">/*导航条*/</span>
+ <span class="pl-kos">.</span><span class="pl-c1">hope</span><span class="pl-c1">-</span><span class="pl-s1">c</span><span class="pl-c1">-</span><span class="pl-c1">PJLV</span><span class="pl-c1">-</span><span class="pl-s1">icKsjdm</span><span class="pl-c1">-</span><span class="pl-s1">css</span>::<span class="pl-s1">after</span> <span class="pl-kos">{</span>
+    <span class="pl-c1">background</span>: <span class="pl-en">rgba</span><span class="pl-kos">(</span><span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">)</span> <span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+<span class="pl-c">/*白天模式*/</span>
+ <span class="pl-kos">.</span><span class="pl-c1">hope</span><span class="pl-c1">-</span><span class="pl-s1">ui</span><span class="pl-c1">-</span><span class="pl-s1">light</span> <span class="pl-kos">.</span><span class="pl-c1">hope</span><span class="pl-c1">-</span><span class="pl-s1">c</span><span class="pl-c1">-</span><span class="pl-c1">PJLV</span><span class="pl-c1">-</span><span class="pl-s1">icKsjdm</span><span class="pl-c1">-</span><span class="pl-s1">css</span><span class="pl-kos"></span> <span class="pl-kos">{</span>
+    <span class="pl-s1">background</span><span class="pl-c1">-</span><span class="pl-s1">color</span>: <span class="pl-en">rgba</span><span class="pl-kos">(</span><span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">0.5</span><span class="pl-kos">)</span> <span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos">;</span>
+    <span class="pl-s1">border</span><span class="pl-c1">-</span><span class="pl-en">radius</span>: <span class="pl-k">var</span><span class="pl-kos">(</span><span class="pl-c1">--</span><span class="pl-s1">hope</span><span class="pl-c1">-</span><span class="pl-s1">radii</span><span class="pl-c1">-</span><span class="pl-s1">xl</span><span class="pl-kos">)</span><span class="pl-kos"></span> <span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+<span class="pl-c">/*夜间模式*/</span>
+ <span class="pl-kos">.</span><span class="pl-s1">hope</span><span class="pl-c1">-</span><span class="pl-s1">ui</span><span class="pl-c1">-</span><span class="pl-s1">dark</span> <span class="pl-kos">.</span><span class="pl-c1">hope</span><span class="pl-c1">-</span><span class="pl-s1">c</span><span class="pl-c1">-</span><span class="pl-c1">PJLV</span><span class="pl-c1">-</span><span class="pl-s1">icKsjdm</span><span class="pl-c1">-</span><span class="pl-s1">css</span><span class="pl-kos"></span> <span class="pl-kos">{</span>
+    <span class="pl-s1">background</span><span class="pl-c1">-</span><span class="pl-en">color</span>:<span class="pl-s1">rgb</span><span class="pl-kos">(</span><span class="pl-c1">0</span> <span class="pl-c1">0</span> <span class="pl-c1">0</span> <span class="pl-c1">/</span> <span class="pl-c1">50</span><span class="pl-c1">%</span><span class="pl-kos">)</span> <span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos"></span><span class="pl-kos">;</span>
+    <span class="pl-s1">border</span><span class="pl-c1">-</span><span class="pl-en">radius</span>: <span class="pl-k">var</span><span class="pl-kos">(</span><span class="pl-c1">--</span><span class="pl-s1">hope</span><span class="pl-c1">-</span><span class="pl-s1">radii</span><span class="pl-c1">-</span><span class="pl-s1">xl</span><span class="pl-kos">)</span><span class="pl-kos"></span> <span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">/*仅吸附导航栏*/</span>
+<span class="pl-c">/*导航条*/</span>
+ <span class="pl-kos">.</span><span class="pl-s1">hope</span><span class="pl-c1">-</span><span class="pl-s1">c</span><span class="pl-c1">-</span><span class="pl-c1">PJLV</span><span class="pl-c1">-</span><span class="pl-s1">ifdXShc</span><span class="pl-c1">-</span><span class="pl-s1">css</span>::<span class="pl-s1">after</span> <span class="pl-kos">{</span>
+    <span class="pl-c1">background</span>: <span class="pl-en">rgba</span><span class="pl-kos">(</span><span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">)</span> <span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+<span class="pl-c">/*白天模式*/</span>
+ <span class="pl-kos">.</span><span class="pl-c1">hope</span><span class="pl-c1">-</span><span class="pl-s1">ui</span><span class="pl-c1">-</span><span class="pl-s1">light</span> <span class="pl-kos">.</span><span class="pl-c1">hope</span><span class="pl-c1">-</span><span class="pl-s1">c</span><span class="pl-c1">-</span><span class="pl-s1">hrsMRY</span><span class="pl-kos"></span> <span class="pl-kos">{</span>
+    <span class="pl-s1">background</span><span class="pl-c1">-</span><span class="pl-s1">color</span>: <span class="pl-en">rgba</span><span class="pl-kos">(</span><span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">255</span><span class="pl-kos">,</span> <span class="pl-c1">0.5</span><span class="pl-kos">)</span> <span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos">;</span>
+    <span class="pl-s1">border</span><span class="pl-c1">-</span><span class="pl-en">radius</span>: <span class="pl-k">var</span><span class="pl-kos">(</span><span class="pl-c1">--</span><span class="pl-s1">hope</span><span class="pl-c1">-</span><span class="pl-s1">radii</span><span class="pl-c1">-</span><span class="pl-s1">xl</span><span class="pl-kos">)</span><span class="pl-kos"></span> <span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+<span class="pl-c">/*夜间模式*/</span>
+ <span class="pl-kos">.</span><span class="pl-s1">hope</span><span class="pl-c1">-</span><span class="pl-s1">ui</span><span class="pl-c1">-</span><span class="pl-s1">dark</span> <span class="pl-kos">.</span><span class="pl-c1">hope</span><span class="pl-c1">-</span><span class="pl-s1">c</span><span class="pl-c1">-</span><span class="pl-s1">hrsMRY</span><span class="pl-kos"></span> <span class="pl-kos">{</span>
+    <span class="pl-s1">background</span><span class="pl-c1">-</span><span class="pl-en">color</span>:<span class="pl-s1">rgb</span><span class="pl-kos">(</span><span class="pl-c1">0</span> <span class="pl-c1">0</span> <span class="pl-c1">0</span> <span class="pl-c1">/</span> <span class="pl-c1">50</span><span class="pl-c1">%</span><span class="pl-kos">)</span> <span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos"></span><span class="pl-kos">;</span>
+    <span class="pl-s1">border</span><span class="pl-c1">-</span><span class="pl-en">radius</span>: <span class="pl-k">var</span><span class="pl-kos">(</span><span class="pl-c1">--</span><span class="pl-s1">hope</span><span class="pl-c1">-</span><span class="pl-s1">radii</span><span class="pl-c1">-</span><span class="pl-s1">xl</span><span class="pl-kos">)</span><span class="pl-kos"></span> <span class="pl-c1">!</span><span class="pl-s1">important</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span></pre></div>
+</li>
+<li>
+<p>字体相关</p>
+<ul>
+<li>
+<p>环境变量</p>
+<div class="highlight highlight-text-html-basic"><pre class="notranslate"><span class="pl-c">&lt;!--引入字体，全局字体使用--&gt;</span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">link</span> <span class="pl-c1">rel</span>="<span class="pl-s">stylesheet</span>" <span class="pl-c1">href</span>="<span class="pl-s">https://npm.elemecdn.com/lxgw-wenkai-webfont@1.1.0/lxgwwenkai-regular.css</span>" /&gt;
+
+<span class="pl-c">&lt;!-- Font6，自定义底部使用和看板娘使用的图标和字体文件--&gt;</span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">link</span> <span class="pl-c1">type</span>='<span class="pl-s">text/css</span>' <span class="pl-c1">rel</span>="<span class="pl-s">stylesheet</span>" <span class="pl-c1">href</span>="<span class="pl-s">https://npm.elemecdn.com/font6pro@6.3.0/css/fontawesome.min.css</span>" <span class="pl-c1">media</span>='<span class="pl-s">all</span>'<span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">link</span> <span class="pl-c1">href</span>="<span class="pl-s">https://npm.elemecdn.com/font6pro@6.3.0/css/all.min.css</span>" <span class="pl-c1">rel</span>="<span class="pl-s">stylesheet</span>"<span class="pl-kos">&gt;</span></pre></div>
+</li>
+<li>
+<p>替换字体</p>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-c">/*全局字体*/</span>
+ <span class="pl-c1">*</span> <span class="pl-kos">{</span>
+    <span class="pl-s1">font</span><span class="pl-c1">-</span><span class="pl-s1">family</span>:<span class="pl-c1">LXGW</span> <span class="pl-v">WenKai</span>
+<span class="pl-kos">}</span>
+<span class="pl-c1">*</span> <span class="pl-kos">{</span>
+    <span class="pl-s1">font</span><span class="pl-c1">-</span><span class="pl-s1">weight</span>:<span class="pl-s1">bold</span>
+<span class="pl-kos">}</span>
+<span class="pl-s1">body</span><span class="pl-kos"></span> <span class="pl-kos">{</span>
+    <span class="pl-s1">font</span><span class="pl-c1">-</span><span class="pl-s1">family</span>: <span class="pl-c1">LXGW</span> <span class="pl-v">WenKai</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span></pre></div>
+</li>
+</ul>
+</li>
+</ol>
+<h2>美化 自定义内容</h2>
+<ol>
+<li>
+<p>延迟加载</p>
+<div class="highlight highlight-text-html-basic"><pre class="notranslate"><span class="pl-c">&lt;!--延迟加载--&gt;</span>
+<span class="pl-c">&lt;!--如果要写自定义内容建议都加到这个延迟加载的范围内--&gt;</span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">id</span>="<span class="pl-s">customize</span>" <span class="pl-c1">style</span>="<span class="pl-s">display: none;</span>"<span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>
+	<span class="pl-c">&lt;!--自定义内容都应加在该部分--&gt;</span>
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>
+<span class="pl-c">&lt;!--延迟加载配套使用JS--&gt;</span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">script</span><span class="pl-kos">&gt;</span>
+    <span class="pl-k">let</span> <span class="pl-s1">interval</span> <span class="pl-c1">=</span> <span class="pl-en">setInterval</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+        <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">querySelector</span><span class="pl-kos">(</span><span class="pl-s">".footer"</span><span class="pl-kos">)</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+            <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">querySelector</span><span class="pl-kos">(</span><span class="pl-s">"#customize"</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">style</span><span class="pl-kos">.</span><span class="pl-c1">display</span> <span class="pl-c1">=</span> <span class="pl-s">""</span><span class="pl-kos">;</span>
+            <span class="pl-en">clearInterval</span><span class="pl-kos">(</span><span class="pl-s1">interval</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-c1">200</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">&gt;</span></pre></div>
+</li>
+<li>
+<p>底部自定义</p>
+<div class="highlight highlight-text-html-basic"><pre class="notranslate">        <span class="pl-kos">&lt;</span><span class="pl-ent">br</span> /&gt;
+        <span class="pl-kos">&lt;</span><span class="pl-ent">center</span> <span class="pl-c1">class</span>="<span class="pl-s">dibu</span>"<span class="pl-kos">&gt;</span>
+
+            <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">style</span>="<span class="pl-s">font-size: 20px; font-weight: bold;</span>"<span class="pl-kos">&gt;</span>
+                <span class="pl-kos">&lt;</span><span class="pl-ent">span</span> <span class="pl-c1">class</span>="<span class="pl-s">nav-item</span>"<span class="pl-kos">&gt;</span>
+                    <span class="pl-kos">&lt;</span><span class="pl-ent">a</span> <span class="pl-c1">class</span>="<span class="pl-s">nav-link</span>" <span class="pl-c1">href</span>="<span class="pl-s">http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&amp;k=vS4Jyt8wSecObdv7LNLtwxP7U_SBIeqg&amp;authKey=5UXdAh1sOrSevtuUpHJOZ02BjE9STWrEXdzwArqBQ3ooeJmeUtNei84%2BGmFbpt4J&amp;noverify=0&amp;group_code=885781238</span>"
+                        <span class="pl-c1">target</span>="<span class="pl-s">_blank</span>"<span class="pl-kos">&gt;</span>
+                        <span class="pl-kos">&lt;</span><span class="pl-ent">i</span> <span class="pl-c1">class</span>="<span class="pl-s">fab fa-qq</span>" <span class="pl-c1">style</span>="<span class="pl-s">color:#FE9900</span>" <span class="pl-c1">aria-hidden</span>="<span class="pl-s">true</span>"<span class="pl-kos">&gt;</span>
+                        <span class="pl-kos">&lt;/</span><span class="pl-ent">i</span><span class="pl-kos">&gt;</span>
+                        QQ |
+                    <span class="pl-kos">&lt;/</span><span class="pl-ent">a</span><span class="pl-kos">&gt;</span>
+                <span class="pl-kos">&lt;/</span><span class="pl-ent">span</span><span class="pl-kos">&gt;</span>
+                <span class="pl-kos">&lt;</span><span class="pl-ent">span</span> <span class="pl-c1">class</span>="<span class="pl-s">nav-item</span>"<span class="pl-kos">&gt;</span>
+                    <span class="pl-kos">&lt;</span><span class="pl-ent">a</span> <span class="pl-c1">class</span>="<span class="pl-s">nav-link</span>" <span class="pl-c1">href</span>="<span class="pl-s">https://kdocs.cn/l/cbHE1IEOZyOj</span>" <span class="pl-c1">target</span>="<span class="pl-s">_blank</span>"<span class="pl-kos">&gt;</span>
+                        <span class="pl-kos">&lt;</span><span class="pl-ent">i</span> <span class="pl-c1">class</span>="<span class="pl-s">fa-duotone fa-envelope-open</span>" <span class="pl-c1">style</span>="<span class="pl-s">color:#FE9900</span>" <span class="pl-c1">aria-hidden</span>="<span class="pl-s">true</span>"<span class="pl-kos">&gt;</span>
+                        <span class="pl-kos">&lt;/</span><span class="pl-ent">i</span><span class="pl-kos">&gt;</span>
+                        文档 |
+                    <span class="pl-kos">&lt;/</span><span class="pl-ent">a</span><span class="pl-kos">&gt;</span>
+                <span class="pl-kos">&lt;/</span><span class="pl-ent">span</span><span class="pl-kos">&gt;</span>
+                <span class="pl-kos">&lt;</span><span class="pl-ent">span</span> <span class="pl-c1">class</span>="<span class="pl-s">nav-item</span>"<span class="pl-kos">&gt;</span>
+                    <span class="pl-kos">&lt;</span><span class="pl-ent">a</span> <span class="pl-c1">class</span>="<span class="pl-s">nav-link</span>" <span class="pl-c1">href</span>="<span class="pl-s">https://blog.pcdiy.xyz</span>" <span class="pl-c1">target</span>="<span class="pl-s">_blank</span>"<span class="pl-kos">&gt;</span>
+                        <span class="pl-kos">&lt;</span><span class="pl-ent">i</span> <span class="pl-c1">class</span>="<span class="pl-s">fas fa-edit</span>" <span class="pl-c1">style</span>="<span class="pl-s">color:#FE9900</span>" <span class="pl-c1">aria-hidden</span>="<span class="pl-s">true</span>"<span class="pl-kos">&gt;</span>
+                        <span class="pl-kos">&lt;/</span><span class="pl-ent">i</span><span class="pl-kos">&gt;</span>
+                        博客 |
+                    <span class="pl-kos">&lt;/</span><span class="pl-ent">a</span><span class="pl-kos">&gt;</span>
+                <span class="pl-kos">&lt;/</span><span class="pl-ent">span</span><span class="pl-kos">&gt;</span>
+                <span class="pl-kos">&lt;</span><span class="pl-ent">span</span> <span class="pl-c1">class</span>="<span class="pl-s">nav-item</span>"<span class="pl-kos">&gt;</span>
+                    <span class="pl-kos">&lt;</span><span class="pl-ent">a</span> <span class="pl-c1">class</span>="<span class="pl-s">nav-link</span>" <span class="pl-c1">href</span>="<span class="pl-s">https://tieba.baidu.com/f?kw=diy%E9%9B%B6%E4%BB%B6%E7%BB%84%E8%A3%85&amp;ie=utf-8</span>" <span class="pl-c1">target</span>="<span class="pl-s">_blank</span>"<span class="pl-kos">&gt;</span>
+                        <span class="pl-kos">&lt;</span><span class="pl-ent">i</span> <span class="pl-c1">class</span>="<span class="pl-s">fas fa-comment-lines</span>" <span class="pl-c1">style</span>="<span class="pl-s">color:#FE9900;</span>" <span class="pl-c1">aria-hidden</span>="<span class="pl-s">true</span>"<span class="pl-kos">&gt;</span>
+                        <span class="pl-kos">&lt;/</span><span class="pl-ent">i</span><span class="pl-kos">&gt;</span>
+                        贴吧 |
+                    <span class="pl-kos">&lt;/</span><span class="pl-ent">a</span><span class="pl-kos">&gt;</span>
+                <span class="pl-kos">&lt;/</span><span class="pl-ent">span</span><span class="pl-kos">&gt;</span>
+                <span class="pl-kos">&lt;</span><span class="pl-ent">span</span> <span class="pl-c1">class</span>="<span class="pl-s">nav-item</span>"<span class="pl-kos">&gt;</span>
+                    <span class="pl-kos">&lt;</span><span class="pl-ent">a</span> <span class="pl-c1">class</span>="<span class="pl-s">nav-link</span>" <span class="pl-c1">href</span>="<span class="pl-s">https://nezha.pcdiy.xyz</span>" <span class="pl-c1">target</span>="<span class="pl-s">_blank</span>"<span class="pl-kos">&gt;</span>
+                        <span class="pl-kos">&lt;</span><span class="pl-ent">i</span> <span class="pl-c1">class</span>="<span class="pl-s">fa fa-tachometer</span>" <span class="pl-c1">style</span>="<span class="pl-s">color:#FE9900;</span>" <span class="pl-c1">aria-hidden</span>="<span class="pl-s">true</span>"<span class="pl-kos">&gt;</span>
+                        <span class="pl-kos">&lt;/</span><span class="pl-ent">i</span><span class="pl-kos">&gt;</span>
+                        探针 |
+                    <span class="pl-kos">&lt;/</span><span class="pl-ent">a</span><span class="pl-kos">&gt;</span>
+                <span class="pl-kos">&lt;/</span><span class="pl-ent">span</span><span class="pl-kos">&gt;</span>
+                <span class="pl-kos">&lt;</span><span class="pl-ent">span</span> <span class="pl-c1">class</span>="<span class="pl-s">nav-item</span>"<span class="pl-kos">&gt;</span>
+                    <span class="pl-kos">&lt;</span><span class="pl-ent">a</span> <span class="pl-c1">class</span>="<span class="pl-s">nav-link</span>" <span class="pl-c1">href</span>="<span class="pl-s">https://bing.pcdiy.xyz</span>" <span class="pl-c1">target</span>="<span class="pl-s">_blank</span>"<span class="pl-kos">&gt;</span>
+                        <span class="pl-kos">&lt;</span><span class="pl-ent">i</span> <span class="pl-c1">class</span>="<span class="pl-s">fa fa-wifi</span>" <span class="pl-c1">style</span>="<span class="pl-s">color:#FE9900</span>" <span class="pl-c1">aria-hidden</span>="<span class="pl-s">true</span>"<span class="pl-kos">&gt;</span>
+                        <span class="pl-kos">&lt;/</span><span class="pl-ent">i</span><span class="pl-kos">&gt;</span>
+                        AI |
+                    <span class="pl-kos">&lt;/</span><span class="pl-ent">a</span><span class="pl-kos">&gt;</span>
+                <span class="pl-kos">&lt;/</span><span class="pl-ent">span</span><span class="pl-kos">&gt;</span>
+                <span class="pl-c">&lt;!--后台入口--&gt;</span>
+                <span class="pl-kos">&lt;</span><span class="pl-ent">span</span> <span class="pl-c1">class</span>="<span class="pl-s">nav-item</span>"<span class="pl-kos">&gt;</span>
+                    <span class="pl-kos">&lt;</span><span class="pl-ent">a</span> <span class="pl-c1">class</span>="<span class="pl-s">nav-link</span>" <span class="pl-c1">href</span>="<span class="pl-s">/@manage</span>" <span class="pl-c1">target</span>="<span class="pl-s">_blank</span>"<span class="pl-kos">&gt;</span>
+                        <span class="pl-kos">&lt;</span><span class="pl-ent">i</span> <span class="pl-c1">class</span>="<span class="pl-s">fa-solid fa-folder-gear</span>" <span class="pl-c1">style</span>="<span class="pl-s">color:#FE9900;</span>" <span class="pl-c1">aria-hidden</span>="<span class="pl-s">true</span>"<span class="pl-kos">&gt;</span>
+                        <span class="pl-kos">&lt;/</span><span class="pl-ent">i</span><span class="pl-kos">&gt;</span>
+                        管理 |
+                    <span class="pl-kos">&lt;/</span><span class="pl-ent">a</span><span class="pl-kos">&gt;</span>
+                <span class="pl-kos">&lt;/</span><span class="pl-ent">span</span><span class="pl-kos">&gt;</span>
+                <span class="pl-c">&lt;!--版权，请尊重作者--&gt;</span>
+                <span class="pl-kos">&lt;</span><span class="pl-ent">span</span> <span class="pl-c1">class</span>="<span class="pl-s">nav-item</span>"<span class="pl-kos">&gt;</span>
+                    <span class="pl-kos">&lt;</span><span class="pl-ent">a</span> <span class="pl-c1">class</span>="<span class="pl-s">nav-link</span>" <span class="pl-c1">href</span>="<span class="pl-s">https://github.com/Xhofe/alist</span>" <span class="pl-c1">target</span>="<span class="pl-s">_blank</span>"<span class="pl-kos">&gt;</span>
+                        <span class="pl-kos">&lt;</span><span class="pl-ent">i</span> <span class="pl-c1">class</span>="<span class="pl-s">fa-solid fa-copyright</span>" <span class="pl-c1">style</span>="<span class="pl-s">color:#FE9900;</span>" <span class="pl-c1">aria-hidden</span>="<span class="pl-s">true</span>"<span class="pl-kos">&gt;</span>
+                        <span class="pl-kos">&lt;/</span><span class="pl-ent">i</span><span class="pl-kos">&gt;</span>
+                        版权
+                    <span class="pl-kos">&lt;/</span><span class="pl-ent">a</span><span class="pl-kos">&gt;</span>
+                <span class="pl-kos">&lt;/</span><span class="pl-ent">span</span><span class="pl-kos">&gt;</span>
+				<span class="pl-kos">&lt;</span><span class="pl-ent">br</span> /&gt;</pre></div>
+</li>
+<li>
+<p>去掉 <code class="notranslate">power by</code>​ 和 <code class="notranslate">管理</code>​</p>
+<div class="highlight highlight-text-html-basic"><pre class="notranslate">	<span class="pl-c">&lt;!---去掉底部文字---&gt;</span>
+	<span class="pl-kos">&lt;</span><span class="pl-ent">style</span>
+		<span class="pl-c1">type</span>="<span class="pl-s">text/css</span>"<span class="pl-kos">&gt;</span> .footer { 
+		display: none !important; } 
+	<span class="pl-kos">&lt;/</span><span class="pl-ent">style</span><span class="pl-kos">&gt;</span></pre></div>
+</li>
+</ol></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer">Copyright © <span id="year"></span><a href="https://blog.pcdiy.xyz"> PC DIY </a>
+<p>
+<span id="runday"></span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a>
+</p>
+
+<script>
+if(""!=""){
+    var now=new Date();
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("year").innerHTML=now.getFullYear();
+    if(""!=""){document.getElementById("runday").innerHTML=" • "+"网站运行"+diffDay+"天"+" • ";}
+    else{document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";}
+}
+</script>
+</div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n\n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","yeslinyh/yeslinyh.github.io");
+    script.setAttribute("issue-term","title");
+    
+    script.setAttribute("theme","dark-blue");
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+</script>
+
+
+</html>
