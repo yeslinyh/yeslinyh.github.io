@@ -1,3 +1,5 @@
+![](https://img.pcdiy.xyz/file/f36f5788215c41957de42.png)
+
 # 如何部署
 
 ```powershell
