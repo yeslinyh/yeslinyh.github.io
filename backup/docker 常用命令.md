@@ -4,24 +4,24 @@
 
 1. [Ubuntu](https://www.runoob.com/docker/ubuntu-docker-install.html)
 
-    ```
+    ```powershell
      curl -fsSL https://test.docker.com -o test-docker.sh
      sudo sh test-docker.sh
     ```
 2. [Debian](https://www.runoob.com/docker/debian-docker-install.html)
 
-    ```
+    ```powershell
      curl -fsSL https://get.docker.com -o get-docker.sh
      sudo sh get-docker.sh
     ```
 3. [CentOS](https://tutorials.tinkink.net/zh-hans/linux/how-to-install-docker-on-centos-7.html)
 
-    ```
+    ```powershell
     yum install -y yum-utils
     yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
     ```
 
-    ```
+    ```powershell
     yum install docker-ce docker-ce-cli containerd.io
     ```
 4. [Windows](https://www.runoob.com/docker/windows-docker-install.html)
