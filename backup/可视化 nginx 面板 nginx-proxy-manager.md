@@ -49,7 +49,7 @@ wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-
        \- /home/npm/letsencrypt:/etc/letsencrypt
     ```
 
-    ​`81`​ 为 `web`​ 访问端口，可自定义，`80`​ 和 `443`​ **不能修改**
+    ​`81`​ 为 `web`​ 访问端口，可自定义；`80`​ 和 `443`​ **不能修改**
 
 # 启动 `docker-compose`​
 
