@@ -283,7 +283,7 @@ location / {
                         Alist
                     </a>
                 </span>
-				<br />
+        <br />
     ```
 3. 去掉 `power by`​ 和 `管理`​
 
