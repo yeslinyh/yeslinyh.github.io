@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>PC DIY</title><link>https://blog.pcdiy.xyz</link><description>分享有趣的电脑组装芝士</description><copyright>PC DIY</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://img.pcdiy.xyz/file/3129ba92ed7a95eb90e36.jpg</url><title>avatar</title><link>https://blog.pcdiy.xyz</link></image><lastBuildDate>Mon, 15 Jul 2024 03:29:27 +0000</lastBuildDate><managingEditor>PC DIY</managingEditor><ttl>60</ttl><webMaster>PC DIY</webMaster><item><title>下载器 qbittorrent</title><link>https://blog.pcdiy.xyz/post/xia-zai-qi-%20qbittorrent.html</link><description>```yaml&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>PC DIY</title><link>https://blog.pcdiy.xyz</link><description>分享有趣的电脑组装芝士</description><copyright>PC DIY</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://img.pcdiy.xyz/file/3129ba92ed7a95eb90e36.jpg</url><title>avatar</title><link>https://blog.pcdiy.xyz</link></image><lastBuildDate>Mon, 15 Jul 2024 08:33:08 +0000</lastBuildDate><managingEditor>PC DIY</managingEditor><ttl>60</ttl><webMaster>PC DIY</webMaster><item><title>下载器 qbittorrent</title><link>https://blog.pcdiy.xyz/post/xia-zai-qi-%20qbittorrent.html</link><description>```yaml&#13;
 version: '2.1'&#13;
 services:&#13;
   qbittorrent:&#13;
@@ -104,6 +104,7 @@ docker-compose --version&#13;
 7. `environment` 定义环境变量&#13;
 8. `restart` 定义重启条件，可以选择 `unless-stopped` `always`&#13;
 9. `network_mode` 定义容器网络&#13;
+10. `privileged` 定义特权&#13;
 &#13;
 ```yaml&#13;
 version: '3'&#13;
@@ -113,6 +114,7 @@ services:&#13;
     container_name: nginx&#13;
     restart: always&#13;
     network_mode: host&#13;
+    privileged: true&#13;
     ports:&#13;
       - 8080:80&#13;
     volumes:&#13;

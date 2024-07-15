@@ -47,6 +47,7 @@ docker-compose --version
 7. `environment` 定义环境变量
 8. `restart` 定义重启条件，可以选择 `unless-stopped` `always`
 9. `network_mode` 定义容器网络
+10. `privileged` 定义特权
 
 ```yaml
 version: '3'
@@ -56,6 +57,7 @@ services:
     container_name: nginx
     restart: always
     network_mode: host
+    privileged: true
     ports:
       - 8080:80
     volumes:
