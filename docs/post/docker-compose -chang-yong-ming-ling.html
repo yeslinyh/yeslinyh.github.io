@@ -10,9 +10,28 @@
 
 # 安装 docker-compose
 
-```powershell
-$ sudo curl -L 'https://github.com/docker/compose/releases/download/v2.2.2/docker-compose-$(uname -s)-$(uname -m)' -o /usr/local/bin/docker-compose
+安装或更新 docker-compose
 
+```powershell
+sudo curl -L 'https://github.com/docker/compose/releases/download/v2.5.0/docker-compose-$(uname -s)-$(uname -m)' -o /usr/local/bin/docker-compose
+```
+
+给可执行权限
+
+```powershell
+sudo chmod +x /usr/local/bin/docker-compose
+```
+
+创建软链接以便于在终端中使用 docker-compose 命令
+
+```powershell
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+```
+
+检查版本
+
+```powershell
+docker-compose --version
 ```
 
 # yaml 配置文件
@@ -35,33 +54,22 @@ $ sudo curl -L 'https://github.com/docker/compose/releases/download/v2.2.2/docke
 6. `volumes` 定义目录映射
 7. `environment` 定义环境变量
 8. `restart` 定义重启条件，可以选择 `unless-stopped` `always`
-9. `networks` 定义容器网络，`networkname` 为网络名，需要定义，例如 `host` 模式可以如下定义：
-
-    ```yaml
-    networks:
-        networkname:
-          driver: host
-    ```
+9. `network_mode` 定义容器网络
 
 ```yaml
 version: '3'
 services:
-
   nginx:
     image: nginx:latest
     container_name: nginx
-    restart: unless-stopped
+    restart: always
+    network_mode: host
     ports:
       - 8080:80
     volumes:
       - /opt/nginx:/opt/nginx/html
-    networks:
-      - networkname
     environment:
       - PUID=0
-networks:
-    networkname:
-      driver: host
 ```
 
 # 容器命令
@@ -93,9 +101,28 @@ networks:
 
 # 安装 docker-compose
 
-```powershell
-$ sudo curl -L 'https://github.com/docker/compose/releases/download/v2.2.2/docker-compose-$(uname -s)-$(uname -m)' -o /usr/local/bin/docker-compose
+安装或更新 docker-compose
 
+```powershell
+sudo curl -L 'https://github.com/docker/compose/releases/download/v2.5.0/docker-compose-$(uname -s)-$(uname -m)' -o /usr/local/bin/docker-compose
+```
+
+给可执行权限
+
+```powershell
+sudo chmod +x /usr/local/bin/docker-compose
+```
+
+创建软链接以便于在终端中使用 docker-compose 命令
+
+```powershell
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+```
+
+检查版本
+
+```powershell
+docker-compose --version
 ```
 
 # yaml 配置文件
@@ -118,33 +145,22 @@ $ sudo curl -L 'https://github.com/docker/compose/releases/download/v2.2.2/docke
 6. `volumes` 定义目录映射
 7. `environment` 定义环境变量
 8. `restart` 定义重启条件，可以选择 `unless-stopped` `always`
-9. `networks` 定义容器网络，`networkname` 为网络名，需要定义，例如 `host` 模式可以如下定义：
-
-    ```yaml
-    networks:
-        networkname:
-          driver: host
-    ```
+9. `network_mode` 定义容器网络
 
 ```yaml
 version: '3'
 services:
-
   nginx:
     image: nginx:latest
     container_name: nginx
-    restart: unless-stopped
+    restart: always
+    network_mode: host
     ports:
       - 8080:80
     volumes:
       - /opt/nginx:/opt/nginx/html
-    networks:
-      - networkname
     environment:
       - PUID=0
-networks:
-    networkname:
-      driver: host
 ```
 
 # 容器命令
@@ -231,8 +247,14 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     <div id="content">
 <div class="markdown-body" id="postBody"><p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/e6915c4025e7edb6339b69422a4a2c3cca17053f41df893ec8821970de04d97c/68747470733a2f2f63613664376361652e74656c6567726170682d696d6167652d3679782e70616765732e6465762f66696c652f3134363962663131663538313737636434396333632e706e67"><img src="https://camo.githubusercontent.com/e6915c4025e7edb6339b69422a4a2c3cca17053f41df893ec8821970de04d97c/68747470733a2f2f63613664376361652e74656c6567726170682d696d6167652d3679782e70616765732e6465762f66696c652f3134363962663131663538313737636434396333632e706e67" alt="" data-canonical-src="https://ca6d7cae.telegraph-image-6yx.pages.dev/file/1469bf11f58177cd49c3c.png" style="max-width: 100%;"></a></p>
 <h1>安装 docker-compose</h1>
-<div class="highlight highlight-source-powershell"><pre class="notranslate">$ sudo curl <span class="pl-k">-</span>L <span class="pl-s"><span class="pl-pds">"</span>https://github.com/docker/compose/releases/download/v2.2.2/docker-compose-<span class="pl-k"><span class="pl-pse">$</span></span><span class="pl-pse">(</span>uname <span class="pl-k">-</span>s<span class="pl-pse">)</span>-<span class="pl-k"><span class="pl-pse">$</span></span><span class="pl-pse">(</span>uname <span class="pl-k">-</span>m<span class="pl-pse">)</span><span class="pl-pds">"</span></span> <span class="pl-k">-</span>o <span class="pl-k">/</span>usr<span class="pl-k">/</span>local<span class="pl-k">/</span>bin<span class="pl-k">/</span>docker<span class="pl-k">-</span>compose
-</pre></div>
+<p>安装或更新 docker-compose</p>
+<div class="highlight highlight-source-powershell"><pre class="notranslate">sudo curl <span class="pl-k">-</span>L <span class="pl-s"><span class="pl-pds">"</span>https://github.com/docker/compose/releases/download/v2.5.0/docker-compose-<span class="pl-k"><span class="pl-pse">$</span></span><span class="pl-pse">(</span>uname <span class="pl-k">-</span>s<span class="pl-pse">)</span>-<span class="pl-k"><span class="pl-pse">$</span></span><span class="pl-pse">(</span>uname <span class="pl-k">-</span>m<span class="pl-pse">)</span><span class="pl-pds">"</span></span> <span class="pl-k">-</span>o <span class="pl-k">/</span>usr<span class="pl-k">/</span>local<span class="pl-k">/</span>bin<span class="pl-k">/</span>docker<span class="pl-k">-</span>compose</pre></div>
+<p>给可执行权限</p>
+<div class="highlight highlight-source-powershell"><pre class="notranslate">sudo chmod <span class="pl-k">+</span>x <span class="pl-k">/</span>usr<span class="pl-k">/</span>local<span class="pl-k">/</span>bin<span class="pl-k">/</span>docker<span class="pl-k">-</span>compose</pre></div>
+<p>创建软链接以便于在终端中使用 docker-compose 命令</p>
+<div class="highlight highlight-source-powershell"><pre class="notranslate">sudo ln <span class="pl-k">-</span>s <span class="pl-k">/</span>usr<span class="pl-k">/</span>local<span class="pl-k">/</span>bin<span class="pl-k">/</span>docker<span class="pl-k">-</span>compose <span class="pl-k">/</span>usr<span class="pl-k">/</span>bin<span class="pl-k">/</span>docker<span class="pl-k">-</span>compose</pre></div>
+<p>检查版本</p>
+<div class="highlight highlight-source-powershell"><pre class="notranslate">docker<span class="pl-k">-</span>compose <span class="pl-k">--</span>version</pre></div>
 <h1>yaml 配置文件</h1>
 <ol>
 <li>
@@ -267,30 +289,22 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p><code class="notranslate">restart</code> 定义重启条件，可以选择 <code class="notranslate">unless-stopped</code> <code class="notranslate">always</code></p>
 </li>
 <li>
-<p><code class="notranslate">networks</code> 定义容器网络，<code class="notranslate">networkname</code> 为网络名，需要定义，例如 <code class="notranslate">host</code> 模式可以如下定义：</p>
-<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">networks</span>:
-    <span class="pl-ent">networkname</span>:
-      <span class="pl-ent">driver</span>: <span class="pl-s">host</span></pre></div>
+<p><code class="notranslate">network_mode</code> 定义容器网络</p>
 </li>
 </ol>
 <div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">version</span>: <span class="pl-s"><span class="pl-pds">'</span>3<span class="pl-pds">'</span></span>
 <span class="pl-ent">services</span>:
-
   <span class="pl-ent">nginx</span>:
     <span class="pl-ent">image</span>: <span class="pl-s">nginx:latest</span>
     <span class="pl-ent">container_name</span>: <span class="pl-s">nginx</span>
-    <span class="pl-ent">restart</span>: <span class="pl-s">unless-stopped</span>
+    <span class="pl-ent">restart</span>: <span class="pl-s">always</span>
+    <span class="pl-ent">network_mode</span>: <span class="pl-s">host</span>
     <span class="pl-ent">ports</span>:
       - <span class="pl-c1">8080:80</span>
     <span class="pl-ent">volumes</span>:
       - <span class="pl-s">/opt/nginx:/opt/nginx/html</span>
-    <span class="pl-ent">networks</span>:
-      - <span class="pl-s">networkname</span>
     <span class="pl-ent">environment</span>:
-      - <span class="pl-s">PUID=0</span>
-<span class="pl-ent">networks</span>:
-    <span class="pl-ent">networkname</span>:
-      <span class="pl-ent">driver</span>: <span class="pl-s">host</span></pre></div>
+      - <span class="pl-s">PUID=0</span></pre></div>
 <h1>容器命令</h1>
 <p>在 docker-compose 所在目录执行</p>
 <ol>

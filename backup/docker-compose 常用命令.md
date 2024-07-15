@@ -2,9 +2,28 @@
 
 # 安装 docker-compose
 
-```powershell
-$ sudo curl -L "https://github.com/docker/compose/releases/download/v2.2.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+安装或更新 docker-compose
 
+```powershell
+sudo curl -L "https://github.com/docker/compose/releases/download/v2.5.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+```
+
+给可执行权限
+
+```powershell
+sudo chmod +x /usr/local/bin/docker-compose
+```
+
+创建软链接以便于在终端中使用 docker-compose 命令
+
+```powershell
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+```
+
+检查版本
+
+```powershell
+docker-compose --version
 ```
 
 # yaml 配置文件
@@ -27,33 +46,22 @@ $ sudo curl -L "https://github.com/docker/compose/releases/download/v2.2.2/docke
 6. `volumes` 定义目录映射
 7. `environment` 定义环境变量
 8. `restart` 定义重启条件，可以选择 `unless-stopped` `always`
-9. `networks` 定义容器网络，`networkname` 为网络名，需要定义，例如 `host` 模式可以如下定义：
-
-    ```yaml
-    networks:
-        networkname:
-          driver: host
-    ```
+9. `network_mode` 定义容器网络
 
 ```yaml
 version: '3'
 services:
-
   nginx:
     image: nginx:latest
     container_name: nginx
-    restart: unless-stopped
+    restart: always
+    network_mode: host
     ports:
       - 8080:80
     volumes:
       - /opt/nginx:/opt/nginx/html
-    networks:
-      - networkname
     environment:
       - PUID=0
-networks:
-    networkname:
-      driver: host
 ```
 
 # 容器命令
