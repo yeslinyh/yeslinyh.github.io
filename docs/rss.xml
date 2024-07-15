@@ -1,5 +1,27 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>PC DIY</title><link>https://blog.pcdiy.xyz</link><description>分享有趣的电脑组装芝士</description><copyright>PC DIY</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://img.pcdiy.xyz/file/3129ba92ed7a95eb90e36.jpg</url><title>avatar</title><link>https://blog.pcdiy.xyz</link></image><lastBuildDate>Sun, 14 Jul 2024 13:30:54 +0000</lastBuildDate><managingEditor>PC DIY</managingEditor><ttl>60</ttl><webMaster>PC DIY</webMaster><item><title>docker-compose 常用命令</title><link>https://blog.pcdiy.xyz/post/docker-compose%20-chang-yong-ming-ling.html</link><description>![](https://ca6d7cae.telegraph-image-6yx.pages.dev/file/1469bf11f58177cd49c3c.png)&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>PC DIY</title><link>https://blog.pcdiy.xyz</link><description>分享有趣的电脑组装芝士</description><copyright>PC DIY</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://img.pcdiy.xyz/file/3129ba92ed7a95eb90e36.jpg</url><title>avatar</title><link>https://blog.pcdiy.xyz</link></image><lastBuildDate>Mon, 15 Jul 2024 02:46:20 +0000</lastBuildDate><managingEditor>PC DIY</managingEditor><ttl>60</ttl><webMaster>PC DIY</webMaster><item><title>电子书库 talebook</title><link>https://blog.pcdiy.xyz/post/dian-zi-shu-ku-%20talebook.html</link><description>```yaml&#13;
+version: '2.4'&#13;
+services:&#13;
+    talebook:&#13;
+        container_name: talebook&#13;
+        image: talebook/talebook:latest&#13;
+        restart: always&#13;
+        ports:&#13;
+            - 8081:80&#13;
+        volumes:&#13;
+            - /volume4/docker/talebook:/data&#13;
+        environment:&#13;
+            - PUID=1000&#13;
+            - PGID=1000&#13;
+            - TZ=Asia/Shanghai&#13;
+            - SSR=ON&#13;
+    douban-api-rs:&#13;
+        container_name: douban-api-rs&#13;
+        image: ghcr.io/cxfksword/douban-api-rs:latest&#13;
+        restart: always&#13;
+        ports:&#13;
+            - 10080:80&#13;
+```。</description><guid isPermaLink="true">https://blog.pcdiy.xyz/post/dian-zi-shu-ku-%20talebook.html</guid><pubDate>Mon, 15 Jul 2024 02:45:56 +0000</pubDate></item><item><title>docker-compose 常用命令</title><link>https://blog.pcdiy.xyz/post/docker-compose%20-chang-yong-ming-ling.html</link><description>![](https://ca6d7cae.telegraph-image-6yx.pages.dev/file/1469bf11f58177cd49c3c.png)&#13;
 &#13;
 # 安装 docker-compose&#13;
 &#13;
