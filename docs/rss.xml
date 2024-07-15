@@ -1,5 +1,22 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>PC DIY</title><link>https://blog.pcdiy.xyz</link><description>分享有趣的电脑组装芝士</description><copyright>PC DIY</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://img.pcdiy.xyz/file/3129ba92ed7a95eb90e36.jpg</url><title>avatar</title><link>https://blog.pcdiy.xyz</link></image><lastBuildDate>Mon, 15 Jul 2024 02:46:20 +0000</lastBuildDate><managingEditor>PC DIY</managingEditor><ttl>60</ttl><webMaster>PC DIY</webMaster><item><title>电子书库 talebook</title><link>https://blog.pcdiy.xyz/post/dian-zi-shu-ku-%20talebook.html</link><description>```yaml&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>PC DIY</title><link>https://blog.pcdiy.xyz</link><description>分享有趣的电脑组装芝士</description><copyright>PC DIY</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://img.pcdiy.xyz/file/3129ba92ed7a95eb90e36.jpg</url><title>avatar</title><link>https://blog.pcdiy.xyz</link></image><lastBuildDate>Mon, 15 Jul 2024 02:46:54 +0000</lastBuildDate><managingEditor>PC DIY</managingEditor><ttl>60</ttl><webMaster>PC DIY</webMaster><item><title>导航面板 homepage</title><link>https://blog.pcdiy.xyz/post/dao-hang-mian-ban-%20homepage.html</link><description>```yaml&#13;
+version: '3.3'&#13;
+services:&#13;
+  homepage:&#13;
+    image: ghcr.io/gethomepage/homepage:latest&#13;
+    container_name: homepage&#13;
+    restart: always&#13;
+    ports:&#13;
+      - 3003:3000&#13;
+    volumes:&#13;
+      - /volume4/docker/homepage/config:/app/config&#13;
+      - /volume4/docker/homepage/icons:/app/public/icons&#13;
+      - /volume4/docker/homepage/images:/app/public/images&#13;
+      - /var/run/docker.sock:/var/run/docker.sock&#13;
+    environment:&#13;
+      - PUID=0&#13;
+      - PGID=0&#13;
+```。</description><guid isPermaLink="true">https://blog.pcdiy.xyz/post/dao-hang-mian-ban-%20homepage.html</guid><pubDate>Mon, 15 Jul 2024 02:46:31 +0000</pubDate></item><item><title>电子书库 talebook</title><link>https://blog.pcdiy.xyz/post/dian-zi-shu-ku-%20talebook.html</link><description>```yaml&#13;
 version: '2.4'&#13;
 services:&#13;
     talebook:&#13;
