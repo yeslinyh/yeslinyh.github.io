@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>PC DIY</title><link>https://blog.pcdiy.xyz</link><description>分享有趣的电脑组装芝士</description><copyright>PC DIY</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://img.pcdiy.xyz/file/3129ba92ed7a95eb90e36.jpg</url><title>avatar</title><link>https://blog.pcdiy.xyz</link></image><lastBuildDate>Fri, 19 Jul 2024 03:35:50 +0000</lastBuildDate><managingEditor>PC DIY</managingEditor><ttl>60</ttl><webMaster>PC DIY</webMaster><item><title>rdp 远程桌面的常见问题</title><link>https://blog.pcdiy.xyz/post/rdp%20-yuan-cheng-zhuo-mian-de-chang-jian-wen-ti.html</link><description># 如何开启&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>PC DIY</title><link>https://blog.pcdiy.xyz</link><description>分享有趣的电脑组装芝士</description><copyright>PC DIY</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://img.pcdiy.xyz/file/3129ba92ed7a95eb90e36.jpg</url><title>avatar</title><link>https://blog.pcdiy.xyz</link></image><lastBuildDate>Fri, 19 Jul 2024 03:44:39 +0000</lastBuildDate><managingEditor>PC DIY</managingEditor><ttl>60</ttl><webMaster>PC DIY</webMaster><item><title>rdp 远程桌面的常见问题</title><link>https://blog.pcdiy.xyz/post/rdp%20-yuan-cheng-zhuo-mian-de-chang-jian-wen-ti.html</link><description># 如何开启&#13;
 &#13;
 ​`Windows 设置`​ - `系统`​ - `远程桌面`​ - 勾选 `启用远程桌面`​&#13;
 &#13;
@@ -61,8 +61,14 @@
 &#13;
     ​![](https://img.pcdiy.xyz/file/16c5ab95c196b9236a58e.png)​&#13;
 &#13;
-‍&#13;
-。</description><guid isPermaLink="true">https://blog.pcdiy.xyz/post/rdp%20-yuan-cheng-zhuo-mian-de-chang-jian-wen-ti.html</guid><pubDate>Fri, 19 Jul 2024 03:35:28 +0000</pubDate></item><item><title>定时任务管理平台 qinglong &amp; qd</title><link>https://blog.pcdiy.xyz/post/ding-shi-ren-wu-guan-li-ping-tai-%20qinglong%20%26%20qd.html</link><description>```yaml&#13;
+# [更改远程桌面的默认 3389 端口](https://learn.microsoft.com/zh-cn/windows-server/remote/remote-desktop-services/clients/change-listening-port)&#13;
+&#13;
+1. 启动 `注册表编辑器`（在 `搜索` 中键入 `regedit`）&#13;
+2. 导航到以下注册表子项：**HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp**&#13;
+3. 查找端口号&#13;
+4. 单击 `编辑` \&gt; `修改`，然后单击 `十进制`&#13;
+5. 键入新端口号，然后单击 `确定`&#13;
+6. 关闭注册表编辑器，然后重新启动计算机。</description><guid isPermaLink="true">https://blog.pcdiy.xyz/post/rdp%20-yuan-cheng-zhuo-mian-de-chang-jian-wen-ti.html</guid><pubDate>Fri, 19 Jul 2024 03:35:28 +0000</pubDate></item><item><title>定时任务管理平台 qinglong &amp; qd</title><link>https://blog.pcdiy.xyz/post/ding-shi-ren-wu-guan-li-ping-tai-%20qinglong%20%26%20qd.html</link><description>```yaml&#13;
 version: '3'&#13;
 services:&#13;
   qinglong:&#13;

@@ -60,4 +60,11 @@
 
     ​![](https://img.pcdiy.xyz/file/16c5ab95c196b9236a58e.png)​
 
-‍
+# [更改远程桌面的默认 3389 端口](https://learn.microsoft.com/zh-cn/windows-server/remote/remote-desktop-services/clients/change-listening-port)
+
+1. 启动 `注册表编辑器`（在 `搜索` 中键入 `regedit`）
+2. 导航到以下注册表子项：**HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp**
+3. 查找端口号
+4. 单击 `编辑` \> `修改`，然后单击 `十进制`
+5. 键入新端口号，然后单击 `确定`
+6. 关闭注册表编辑器，然后重新启动计算机
