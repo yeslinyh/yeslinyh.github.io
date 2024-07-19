@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark-blue" data-light-theme="dark" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    <link rel="icon" href="https://img.pcdiy.xyz/file/3129ba92ed7a95eb90e36.jpg">
+<meta name="description" content="# 如何开启
+
+​`Windows 设置`​ - `系统`​ - `远程桌面`​ - 勾选 `启用远程桌面`​
+
+​![](https://img.pcdiy.xyz/file/6e2c65bec376a4bb0dfc2.png)​
+
+# 某些设置由你的组织管理
+
+## 问题截图
+
+​![](https://img.pcdiy.xyz/file/f7edf521fd3eddabed3f6.png)​
+
+## 解决方案
+
+1. ​`win + R`​ 输入 `gpedit.msc`​ ，点击 `确定`​
+
+    ​![](https://img.pcdiy.xyz/file/d930ca650bcf3d3cf3390.png)​
+2. 依次打开 `计算机配置`​ - `管理模块`​ - `Windows组件`​ - `远程桌面服务`​ - `远程桌面会话主机`​ - `连接`​
+3. 在右边找到 `允许用户通过使用远程桌面服务进行远程连接`​ ，右键点击 `编辑`​ - 设置为 `启动`​，最后点击 `应用`​
+
+    ​![](https://img.pcdiy.xyz/file/a70bac33c7147dff1b81a.png)​
+
+# 实现免密码远程控制
+
+0. 通常来说，默认配置下不允许不设置密码进行远程控制，以下给出解决方案
+1. ​`win + R`​ 输入 `secpol.msc`​ ，点击 `确定`​
+
+    ​![](https://img.pcdiy.xyz/file/849fff65e738f72236f97.png)​
+2. 依次打开 `安全设置`​ - `本地策略`​ - `安全选项`​
+
+    ​![](https://img.pcdiy.xyz/file/7374429b79cd06acf4dce.png)​
+3. 右边往下拉，找到 `帐户：使用空密码的本地帐户只允许`​ ，双击，选择 `已禁用`​
+
+    ​![](https://img.pcdiy.xyz/file/4e94280ae7769d0ed43d5.png)​
+
+# 出现身份验证错误，无法连接到本地安全机构
+
+## 问题截图
+
+​![](https://img.pcdiy.xyz/file/2138aa6dd35c042ec44f1.png)​
+
+## 解决方案
+
+### 方法一
+
+1. ​`win + R`​ 输入 `secpol.msc`​ ，点击 `确定`​
+
+    ​![](https://img.pcdiy.xyz/file/849fff65e738f72236f97.png)​
+2. 依次打开 `安全设置`​ - `本地策略`​ - `安全选项`​，右边往下拉，找到 `网络访问：本地账户的共享和安全模型`​ ，双击，选择 `经典 - 对本地用户进行身份验证，不改变其本来身份`​
+
+    ​![](https://img.pcdiy.xyz/file/a1cf6f99bee4d048c05e3.png)​
+
+### 方法二
+
+1. ​`win + R`​ 输入 `gpedit.msc`​ ，点击 `确定`​
+
+    ​![](https://img.pcdiy.xyz/file/d930ca650bcf3d3cf3390.png)​
+2. 依次打开 `计算机配置`​ - `管理模块`​ - `Windows组件`​ - `远程桌面服务`​ - `远程桌面会话主机`​ - `安全`​
+3. 在右边找到 `要求使用网络级别的身份验证对远程连接的用户进行身份验证`​ ，右键点击 `编辑`​ - 设置为 `已禁用`​，最后点击 `应用`​
+
+    ​![](https://img.pcdiy.xyz/file/16c5ab95c196b9236a58e.png)​
+
+‍
+。">
+<meta property="og:title" content="rdp 远程桌面的常见问题">
+<meta property="og:description" content="# 如何开启
+
+​`Windows 设置`​ - `系统`​ - `远程桌面`​ - 勾选 `启用远程桌面`​
+
+​![](https://img.pcdiy.xyz/file/6e2c65bec376a4bb0dfc2.png)​
+
+# 某些设置由你的组织管理
+
+## 问题截图
+
+​![](https://img.pcdiy.xyz/file/f7edf521fd3eddabed3f6.png)​
+
+## 解决方案
+
+1. ​`win + R`​ 输入 `gpedit.msc`​ ，点击 `确定`​
+
+    ​![](https://img.pcdiy.xyz/file/d930ca650bcf3d3cf3390.png)​
+2. 依次打开 `计算机配置`​ - `管理模块`​ - `Windows组件`​ - `远程桌面服务`​ - `远程桌面会话主机`​ - `连接`​
+3. 在右边找到 `允许用户通过使用远程桌面服务进行远程连接`​ ，右键点击 `编辑`​ - 设置为 `启动`​，最后点击 `应用`​
+
+    ​![](https://img.pcdiy.xyz/file/a70bac33c7147dff1b81a.png)​
+
+# 实现免密码远程控制
+
+0. 通常来说，默认配置下不允许不设置密码进行远程控制，以下给出解决方案
+1. ​`win + R`​ 输入 `secpol.msc`​ ，点击 `确定`​
+
+    ​![](https://img.pcdiy.xyz/file/849fff65e738f72236f97.png)​
+2. 依次打开 `安全设置`​ - `本地策略`​ - `安全选项`​
+
+    ​![](https://img.pcdiy.xyz/file/7374429b79cd06acf4dce.png)​
+3. 右边往下拉，找到 `帐户：使用空密码的本地帐户只允许`​ ，双击，选择 `已禁用`​
+
+    ​![](https://img.pcdiy.xyz/file/4e94280ae7769d0ed43d5.png)​
+
+# 出现身份验证错误，无法连接到本地安全机构
+
+## 问题截图
+
+​![](https://img.pcdiy.xyz/file/2138aa6dd35c042ec44f1.png)​
+
+## 解决方案
+
+### 方法一
+
+1. ​`win + R`​ 输入 `secpol.msc`​ ，点击 `确定`​
+
+    ​![](https://img.pcdiy.xyz/file/849fff65e738f72236f97.png)​
+2. 依次打开 `安全设置`​ - `本地策略`​ - `安全选项`​，右边往下拉，找到 `网络访问：本地账户的共享和安全模型`​ ，双击，选择 `经典 - 对本地用户进行身份验证，不改变其本来身份`​
+
+    ​![](https://img.pcdiy.xyz/file/a1cf6f99bee4d048c05e3.png)​
+
+### 方法二
+
+1. ​`win + R`​ 输入 `gpedit.msc`​ ，点击 `确定`​
+
+    ​![](https://img.pcdiy.xyz/file/d930ca650bcf3d3cf3390.png)​
+2. 依次打开 `计算机配置`​ - `管理模块`​ - `Windows组件`​ - `远程桌面服务`​ - `远程桌面会话主机`​ - `安全`​
+3. 在右边找到 `要求使用网络级别的身份验证对远程连接的用户进行身份验证`​ ，右键点击 `编辑`​ - 设置为 `已禁用`​，最后点击 `应用`​
+
+    ​![](https://img.pcdiy.xyz/file/16c5ab95c196b9236a58e.png)​
+
+‍
+。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.pcdiy.xyz/post/rdp%20-yuan-cheng-zhuo-mian-de-chang-jian-wen-ti.html">
+<meta property="og:image" content="https://img.pcdiy.xyz/file/3129ba92ed7a95eb90e36.jpg">
+<title>rdp 远程桌面的常见问题</title>
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">rdp 远程桌面的常见问题</h1>
+<div class="title-right">
+    <a href="https://blog.pcdiy.xyz" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/yeslinyh/yeslinyh.github.io/issues/25" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题"style="display:none;">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h1>如何开启</h1>
+<p>​<code class="notranslate">Windows 设置</code>​ - <code class="notranslate">系统</code>​ - <code class="notranslate">远程桌面</code>​ - 勾选 <code class="notranslate">启用远程桌面</code>​</p>
+<p>​<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/5c18ae266a6fa17b00443d409636a54e0f740f628352c0132ec218c89cd8fbfd/68747470733a2f2f696d672e70636469792e78797a2f66696c652f3665326336356265633337366134626230646663322e706e67"><img src="https://camo.githubusercontent.com/5c18ae266a6fa17b00443d409636a54e0f740f628352c0132ec218c89cd8fbfd/68747470733a2f2f696d672e70636469792e78797a2f66696c652f3665326336356265633337366134626230646663322e706e67" alt="" data-canonical-src="https://img.pcdiy.xyz/file/6e2c65bec376a4bb0dfc2.png" style="max-width: 100%;"></a>​</p>
+<h1>某些设置由你的组织管理</h1>
+<h2>问题截图</h2>
+<p>​<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/b18f8e9e5e01f93908d8015c9149cebb1d56e784970f83aff091709d2d8b1dda/68747470733a2f2f696d672e70636469792e78797a2f66696c652f6637656466353231666433656464616265643366362e706e67"><img src="https://camo.githubusercontent.com/b18f8e9e5e01f93908d8015c9149cebb1d56e784970f83aff091709d2d8b1dda/68747470733a2f2f696d672e70636469792e78797a2f66696c652f6637656466353231666433656464616265643366362e706e67" alt="" data-canonical-src="https://img.pcdiy.xyz/file/f7edf521fd3eddabed3f6.png" style="max-width: 100%;"></a>​</p>
+<h2>解决方案</h2>
+<ol>
+<li>
+<p>​<code class="notranslate">win + R</code>​ 输入 <code class="notranslate">gpedit.msc</code>​ ，点击 <code class="notranslate">确定</code>​</p>
+<p>​<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/e7910c43bba8b17d529574ff431180a387378154895eac17278fd2d38fb520f0/68747470733a2f2f696d672e70636469792e78797a2f66696c652f6439333063613635306263663364336366333339302e706e67"><img src="https://camo.githubusercontent.com/e7910c43bba8b17d529574ff431180a387378154895eac17278fd2d38fb520f0/68747470733a2f2f696d672e70636469792e78797a2f66696c652f6439333063613635306263663364336366333339302e706e67" alt="" data-canonical-src="https://img.pcdiy.xyz/file/d930ca650bcf3d3cf3390.png" style="max-width: 100%;"></a>​</p>
+</li>
+<li>
+<p>依次打开 <code class="notranslate">计算机配置</code>​ - <code class="notranslate">管理模块</code>​ - <code class="notranslate">Windows组件</code>​ - <code class="notranslate">远程桌面服务</code>​ - <code class="notranslate">远程桌面会话主机</code>​ - <code class="notranslate">连接</code>​</p>
+</li>
+<li>
+<p>在右边找到 <code class="notranslate">允许用户通过使用远程桌面服务进行远程连接</code>​ ，右键点击 <code class="notranslate">编辑</code>​ - 设置为 <code class="notranslate">启动</code>​，最后点击 <code class="notranslate">应用</code>​</p>
+<p>​<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/5177a626fe2557468d6e376d327dc76b71f5ba1b07997d8330b529a4b52e34f2/68747470733a2f2f696d672e70636469792e78797a2f66696c652f6137306261633333633731343764666631623831612e706e67"><img src="https://camo.githubusercontent.com/5177a626fe2557468d6e376d327dc76b71f5ba1b07997d8330b529a4b52e34f2/68747470733a2f2f696d672e70636469792e78797a2f66696c652f6137306261633333633731343764666631623831612e706e67" alt="" data-canonical-src="https://img.pcdiy.xyz/file/a70bac33c7147dff1b81a.png" style="max-width: 100%;"></a>​</p>
+</li>
+</ol>
+<h1>实现免密码远程控制</h1>
+<ol start="0">
+<li>
+<p>通常来说，默认配置下不允许不设置密码进行远程控制，以下给出解决方案</p>
+</li>
+<li>
+<p>​<code class="notranslate">win + R</code>​ 输入 <code class="notranslate">secpol.msc</code>​ ，点击 <code class="notranslate">确定</code>​</p>
+<p>​<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/795fa329fd1afbbf5811296ebdc8aa32fec9f34e292fe24a55d7b8b9972ac5f9/68747470733a2f2f696d672e70636469792e78797a2f66696c652f3834396666663635653733386637323233366639372e706e67"><img src="https://camo.githubusercontent.com/795fa329fd1afbbf5811296ebdc8aa32fec9f34e292fe24a55d7b8b9972ac5f9/68747470733a2f2f696d672e70636469792e78797a2f66696c652f3834396666663635653733386637323233366639372e706e67" alt="" data-canonical-src="https://img.pcdiy.xyz/file/849fff65e738f72236f97.png" style="max-width: 100%;"></a>​</p>
+</li>
+<li>
+<p>依次打开 <code class="notranslate">安全设置</code>​ - <code class="notranslate">本地策略</code>​ - <code class="notranslate">安全选项</code>​</p>
+<p>​<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/4f9e1696d818ad0ef93ab49dcc7e8b0ff90859b83926d0f2e0434d28e152d17e/68747470733a2f2f696d672e70636469792e78797a2f66696c652f3733373434323962373963643036616366346463652e706e67"><img src="https://camo.githubusercontent.com/4f9e1696d818ad0ef93ab49dcc7e8b0ff90859b83926d0f2e0434d28e152d17e/68747470733a2f2f696d672e70636469792e78797a2f66696c652f3733373434323962373963643036616366346463652e706e67" alt="" data-canonical-src="https://img.pcdiy.xyz/file/7374429b79cd06acf4dce.png" style="max-width: 100%;"></a>​</p>
+</li>
+<li>
+<p>右边往下拉，找到 <code class="notranslate">帐户：使用空密码的本地帐户只允许</code>​ ，双击，选择 <code class="notranslate">已禁用</code>​</p>
+<p>​<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/33f8bf96910c9e01b109394a26ed19690aa069d6ec8b4939c007c78940b82ad8/68747470733a2f2f696d672e70636469792e78797a2f66696c652f3465393432383061653737363964306564343364352e706e67"><img src="https://camo.githubusercontent.com/33f8bf96910c9e01b109394a26ed19690aa069d6ec8b4939c007c78940b82ad8/68747470733a2f2f696d672e70636469792e78797a2f66696c652f3465393432383061653737363964306564343364352e706e67" alt="" data-canonical-src="https://img.pcdiy.xyz/file/4e94280ae7769d0ed43d5.png" style="max-width: 100%;"></a>​</p>
+</li>
+</ol>
+<h1>出现身份验证错误，无法连接到本地安全机构</h1>
+<h2>问题截图</h2>
+<p>​<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/54d2db528ffc4774d1683885a087befe90d6f44c4f3421808bf5c3e249a0b7d3/68747470733a2f2f696d672e70636469792e78797a2f66696c652f3231333861613664643335633034326563343466312e706e67"><img src="https://camo.githubusercontent.com/54d2db528ffc4774d1683885a087befe90d6f44c4f3421808bf5c3e249a0b7d3/68747470733a2f2f696d672e70636469792e78797a2f66696c652f3231333861613664643335633034326563343466312e706e67" alt="" data-canonical-src="https://img.pcdiy.xyz/file/2138aa6dd35c042ec44f1.png" style="max-width: 100%;"></a>​</p>
+<h2>解决方案</h2>
+<h3>方法一</h3>
+<ol>
+<li>
+<p>​<code class="notranslate">win + R</code>​ 输入 <code class="notranslate">secpol.msc</code>​ ，点击 <code class="notranslate">确定</code>​</p>
+<p>​<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/795fa329fd1afbbf5811296ebdc8aa32fec9f34e292fe24a55d7b8b9972ac5f9/68747470733a2f2f696d672e70636469792e78797a2f66696c652f3834396666663635653733386637323233366639372e706e67"><img src="https://camo.githubusercontent.com/795fa329fd1afbbf5811296ebdc8aa32fec9f34e292fe24a55d7b8b9972ac5f9/68747470733a2f2f696d672e70636469792e78797a2f66696c652f3834396666663635653733386637323233366639372e706e67" alt="" data-canonical-src="https://img.pcdiy.xyz/file/849fff65e738f72236f97.png" style="max-width: 100%;"></a>​</p>
+</li>
+<li>
+<p>依次打开 <code class="notranslate">安全设置</code>​ - <code class="notranslate">本地策略</code>​ - <code class="notranslate">安全选项</code>​，右边往下拉，找到 <code class="notranslate">网络访问：本地账户的共享和安全模型</code>​ ，双击，选择 <code class="notranslate">经典 - 对本地用户进行身份验证，不改变其本来身份</code>​</p>
+<p>​<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/3d9b08b8e7a2c529811fe678e0cb4793585d2654a08c14187f4dd3bceff97c6c/68747470733a2f2f696d672e70636469792e78797a2f66696c652f6131636636663939626565346430343863303565332e706e67"><img src="https://camo.githubusercontent.com/3d9b08b8e7a2c529811fe678e0cb4793585d2654a08c14187f4dd3bceff97c6c/68747470733a2f2f696d672e70636469792e78797a2f66696c652f6131636636663939626565346430343863303565332e706e67" alt="" data-canonical-src="https://img.pcdiy.xyz/file/a1cf6f99bee4d048c05e3.png" style="max-width: 100%;"></a>​</p>
+</li>
+</ol>
+<h3>方法二</h3>
+<ol>
+<li>
+<p>​<code class="notranslate">win + R</code>​ 输入 <code class="notranslate">gpedit.msc</code>​ ，点击 <code class="notranslate">确定</code>​</p>
+<p>​<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/e7910c43bba8b17d529574ff431180a387378154895eac17278fd2d38fb520f0/68747470733a2f2f696d672e70636469792e78797a2f66696c652f6439333063613635306263663364336366333339302e706e67"><img src="https://camo.githubusercontent.com/e7910c43bba8b17d529574ff431180a387378154895eac17278fd2d38fb520f0/68747470733a2f2f696d672e70636469792e78797a2f66696c652f6439333063613635306263663364336366333339302e706e67" alt="" data-canonical-src="https://img.pcdiy.xyz/file/d930ca650bcf3d3cf3390.png" style="max-width: 100%;"></a>​</p>
+</li>
+<li>
+<p>依次打开 <code class="notranslate">计算机配置</code>​ - <code class="notranslate">管理模块</code>​ - <code class="notranslate">Windows组件</code>​ - <code class="notranslate">远程桌面服务</code>​ - <code class="notranslate">远程桌面会话主机</code>​ - <code class="notranslate">安全</code>​</p>
+</li>
+<li>
+<p>在右边找到 <code class="notranslate">要求使用网络级别的身份验证对远程连接的用户进行身份验证</code>​ ，右键点击 <code class="notranslate">编辑</code>​ - 设置为 <code class="notranslate">已禁用</code>​，最后点击 <code class="notranslate">应用</code>​</p>
+<p>​<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/062e4f1fb8bf2868e8dac114942edbbcd76f87645243188b9beb752adbe5d073/68747470733a2f2f696d672e70636469792e78797a2f66696c652f3136633561623935633139366239323336613538652e706e67"><img src="https://camo.githubusercontent.com/062e4f1fb8bf2868e8dac114942edbbcd76f87645243188b9beb752adbe5d073/68747470733a2f2f696d672e70636469792e78797a2f66696c652f3136633561623935633139366239323336613538652e706e67" alt="" data-canonical-src="https://img.pcdiy.xyz/file/16c5ab95c196b9236a58e.png" style="max-width: 100%;"></a>​</p>
+</li>
+</ol>
+<p>‍</p></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer">Copyright © <span id="year"></span><a href="https://blog.pcdiy.xyz"> PC DIY </a>
+<p>
+<span id="runday"></span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a>
+</p>
+
+<script>
+if(""!=""){
+    var now=new Date();
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("year").innerHTML=now.getFullYear();
+    if(""!=""){document.getElementById("runday").innerHTML=" • "+"网站运行"+diffDay+"天"+" • ";}
+    else{document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";}
+}
+</script>
+</div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n\n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","yeslinyh/yeslinyh.github.io");
+    script.setAttribute("issue-term","title");
+    
+    script.setAttribute("theme","dark-blue");
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+</script>
+
+
+</html>
