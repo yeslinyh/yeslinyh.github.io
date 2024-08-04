@@ -1,4 +1,4 @@
-1. [下载](https://pcdiy.xyz/%E7%94%B5%E8%84%91%E8%BD%AF%E4%BB%B6/%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BD%E5%99%A8.Internet_Download_Manager) `internet_download_manager_6.42.12.zip`
+1. [下载](https://alist.pcdiy.xyz/%E7%94%B5%E8%84%91%E8%BD%AF%E4%BB%B6/%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BD%E5%99%A8.Internet_Download_Manager) `internet_download_manager_6.42.12.zip`
 
     ![](https://img.pcdiy.xyz/file/146e87bdb1c014bcbc09b.png)
 2. 解压
